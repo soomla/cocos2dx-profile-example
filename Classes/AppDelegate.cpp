@@ -1,0 +1,77 @@
+/*
+ * Copyright (C) 2012 Soomla Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#include "AppDelegate.h"
+#include "MainScene.h"
+#include "ProfileEventHandler.h"
+#include "CCServiceManager.h"
+#include "CCProfileService.h"
+
+USING_NS_CC;
+
+AppDelegate::AppDelegate() {
+    handler = new ProfileEventHandler();
+}
+
+AppDelegate::~AppDelegate() 
+{
+    soomla::CCProfileEventDispatcher::getInstance()->removeEventHandler(handler);
+}
+
+bool AppDelegate::applicationDidFinishLaunching() {
+    
+    __Dictionary *profileParams = __Dictionary::create();
+
+    soomla::CCProfileService::initShared(profileParams);
+
+    // initialize director
+    auto director = Director::getInstance();
+    auto glview = director->getOpenGLView();
+    if(!glview) {
+        glview = GLView::create("My Game");
+        director->setOpenGLView(glview);
+    }
+
+    // turn on display FPS
+    director->setDisplayStats(true);
+
+    // set FPS. the default value is 1.0/60 if you don't call this
+    director->setAnimationInterval(1.0 / 60);
+
+    // create a scene. it's an autorelease object
+    auto scene = MainScene::getMainScene();
+
+    // run
+    director->runWithScene(scene);
+
+    return true;
+}
+
+// This function will be called when the app is inactive. When comes a phone call,it's be invoked too
+void AppDelegate::applicationDidEnterBackground() {
+    Director::getInstance()->stopAnimation();
+
+    // if you use SimpleAudioEngine, it must be pause
+    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+}
+
+// this function will be called when the app is active again
+void AppDelegate::applicationWillEnterForeground() {
+    Director::getInstance()->startAnimation();
+
+    // if you use SimpleAudioEngine, it must resume here
+    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}

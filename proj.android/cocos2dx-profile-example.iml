@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android" name="Android">
+      <configuration />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../cocos/platform/android/java/src">
+      <sourceFolder url="file://$MODULE_DIR$/../../../cocos/platform/android/java/src" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../../extensions/cocos2dx-store/soomla-native/projects/cocos2dx-android-store/src" />
+          <root url="file://$MODULE_DIR$/../cocos2d/extensions/cocos2dx-store/submodules/android-store/SoomlaAndroidStore/src" />
+          <root url="file://$MODULE_DIR$/../../../../android-store/SoomlaAndroidStore/src" />
+          <root url="file://$MODULE_DIR$/../../../../android-store-google-play/src" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/libs" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

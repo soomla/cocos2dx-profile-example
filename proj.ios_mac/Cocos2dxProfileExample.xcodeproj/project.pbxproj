@@ -73,7 +73,6 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
-		9D4101821978D59000907FA8 /* libCocos2dXCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D41017A1978D51900907FA8 /* libCocos2dXCore.a */; };
 		9DDC349D197CB71B009792E1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDC349C197CB71B009792E1 /* MediaPlayer.framework */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -84,9 +83,11 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		F821042819A7759A008DB661 /* ProfileEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F821042619A7759A008DB661 /* ProfileEventHandler.cpp */; };
 		F821042B19A775DF008DB661 /* ProfileScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F821042919A775DF008DB661 /* ProfileScreen.cpp */; };
-		F821043119A78004008DB661 /* libCocos2dXProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F821041D19A7720C008DB661 /* libCocos2dXProfile.a */; };
 		F82107C219A785C3008DB661 /* libSoomlaiOSProfileFacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F82107C119A785C3008DB661 /* libSoomlaiOSProfileFacebook.a */; };
 		F82107C619A78793008DB661 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82107C519A78793008DB661 /* FacebookSDK.framework */; };
+		F83FDE8D19AB832F0011AD54 /* libCocos2dXProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F821041D19A7720C008DB661 /* libCocos2dXProfile.a */; };
+		F83FDE8E19AB83330011AD54 /* libCocos2dXCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D41017A1978D51900907FA8 /* libCocos2dXCore.a */; };
+		F843AAAF19AA0E3C0023AFF6 /* profile in Resources */ = {isa = PBXBuildFile; fileRef = F843AAAE19AA0E3C0023AFF6 /* profile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,6 +344,7 @@
 		F821042A19A775DF008DB661 /* ProfileScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileScreen.h; sourceTree = "<group>"; };
 		F82107C119A785C3008DB661 /* libSoomlaiOSProfileFacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoomlaiOSProfileFacebook.a; path = "../../../extensions/cocos2dx-profile/submodules/ios-profile/social-providers/soomla-facebook/libSoomlaiOSProfileFacebook.a"; sourceTree = "<group>"; };
 		F82107C519A78793008DB661 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/FacebookSDK.framework; sourceTree = "<group>"; };
+		F843AAAE19AA0E3C0023AFF6 /* profile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = profile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,9 +352,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F821043119A78004008DB661 /* libCocos2dXProfile.a in Frameworks */,
+				F83FDE8E19AB83330011AD54 /* libCocos2dXCore.a in Frameworks */,
+				F83FDE8D19AB832F0011AD54 /* libCocos2dXProfile.a in Frameworks */,
 				9DDC349D197CB71B009792E1 /* MediaPlayer.framework in Frameworks */,
-				9D4101821978D59000907FA8 /* libCocos2dXCore.a in Frameworks */,
 				1AC6FB2E180E99EB004C840B /* libbox2d iOS.a in Frameworks */,
 				1AC6FB2F180E99EB004C840B /* libchipmunk iOS.a in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2dx iOS.a in Frameworks */,
@@ -576,6 +578,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F843AAAE19AA0E3C0023AFF6 /* profile */,
 				372B7231101B16E25EE00C94 /* ccb */,
 				372B7C601B1E1C752DBE553A /* images */,
 				372B7C07A2DA9E741FB2A81F /* iphone */,
@@ -794,6 +797,7 @@
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				F843AAAF19AA0E3C0023AFF6 /* profile in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,

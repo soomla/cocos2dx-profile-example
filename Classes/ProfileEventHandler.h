@@ -12,35 +12,29 @@
 class ProfileEventHandler: public soomla::CCProfileEventHandler {
 
 public:
-    virtual void onLoginFailed(cocos2d::__String *errorDescription);
-
+    virtual void onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription);
     virtual void onLoginFinished(soomla::CCUserProfile *userProfile);
-
-    virtual void onLoginStarted(cocos2d::__String *provider);
-
-    virtual void onLogoutFailed(cocos2d::__String *errorDescription);
-
-    virtual void onLogoutFinished(soomla::CCUserProfile *userProfile);
-
-    virtual void onLogoutStarted(cocos2d::__String *provider);
-
-    virtual void onGetContactsFailed(cocos2d::__String *socialActionType, cocos2d::__String *errorDescription);
-
-    virtual void onGetContactsFinished(cocos2d::__String *socialActionType, cocos2d::__Array *contactsDict);
-
-    virtual void onGetContactsStarted(cocos2d::__String *socialActionType);
-
-    virtual void onSocialActionFailedEvent(cocos2d::__String *socialActionType, cocos2d::__String *errorDescription);
-
-    virtual void onSocialActionFinishedEvent(cocos2d::__String *socialActionType);
-
-    virtual void onSocialActionStartedEvent(cocos2d::__String *socialActionType);
-
-    virtual void onLoginCancelledEvent();
-
-    virtual void onRewardGivenEvent(soomla::CCReward *reward);
-
+    virtual void onLoginStarted(soomla::CCProvider provider);
+    virtual void onLoginCancelledEvent(soomla::CCProvider provider);
+    
+    virtual void onLogoutFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription);
+    virtual void onLogoutFinished(soomla::CCProvider provider);
+    virtual void onLogoutStarted(soomla::CCProvider provider);
+    
+    virtual void onGetContactsFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription);
+    virtual void onGetContactsFinished(soomla::CCProvider provider, cocos2d::__Array *contactsDict);
+    virtual void onGetContactsStarted(soomla::CCProvider provider);
+    
+    virtual void onGetFeedFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription);
+    virtual void onGetFeedFinished(soomla::CCProvider provider, cocos2d::__Array *feedList);
+    virtual void onGetFeedStarted(soomla::CCProvider provider);
+    
+    virtual void onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::__String *errorDescription);
+    virtual void onSocialActionFinishedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType);
+    virtual void onSocialActionStartedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType);
+    
     virtual void onUserProfileUpdatedEvent(soomla::CCUserProfile *userProfile);
+    virtual void onRewardGivenEvent(soomla::CCReward *reward);
 };
 
 

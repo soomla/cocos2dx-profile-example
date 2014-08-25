@@ -15,7 +15,7 @@
  */
 
 #include "AppDelegate.h"
-#include "MainScene.h"
+#include "ProfileScreen.h"
 #include "ProfileEventHandler.h"
 #include "CCServiceManager.h"
 #include "CCProfileService.h"
@@ -34,11 +34,13 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching() {
     
     __Dictionary *profileParams = __Dictionary::create();
-
-    soomla::CCProfileService::initShared(profileParams);
-
+    
     // initialize director
     auto director = Director::getInstance();
+    
+    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
+    soomla::CCProfileService::initShared(profileParams);
+    
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLView::create("My Game");
@@ -52,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = MainScene::getMainScene();
+    auto scene = ProfileScreen::createScene();
 
     // run
     director->runWithScene(scene);

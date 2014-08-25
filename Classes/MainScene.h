@@ -70,5 +70,9 @@ public:
     CCB_VIRTUAL_NEW_AUTORELEASE_CREATECCNODE_METHOD(MainScene);
 };
 
+float applyScaleForNode(cocos2d::CCNode* node);
+
+void fill(cocos2d::CCNode* targetNode);
+
 
 #endif // __MainScene_SCENE_H__

@@ -26,32 +26,6 @@ USING_NS_CC;
 
 #define SEL_GROUP "soomlaCallback"
 
-float applyScaleForNode(cocos2d::CCNode* node) {
-    cocos2d::CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    float scale = std::min(winSize.width / node->getContentSize().width,
-                           winSize.height / node->getContentSize().height);
-    node->setScale(scale);
-    node->setPosition(ccp((winSize.width - node->getContentSize().width * scale) / 2,
-                          (winSize.height - node->getContentSize().height * scale) / 2));
-    
-    return scale;
-}
-
-void fill(cocos2d::CCNode* targetNode) {
-    CCPoint leftBottom =
-    targetNode->getParent()->convertToWorldSpace(targetNode->getPosition());
-    CCPoint rightTop =
-    targetNode->getParent()->convertToWorldSpace(
-                                                 ccpAdd(targetNode->getPosition(), ccpFromSize(targetNode->getContentSize())));
-    
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    
-    float scaleX = winSize.width / (rightTop.x - leftBottom.x);
-    float scaleY = winSize.height / (rightTop.y - leftBottom.y);
-    
-    targetNode->setScale(MAX(scaleX, scaleY));
-}
-
 CCScene* MainScene::getMainScene() {
     NodeLoaderLibrary * ccNodeLoaderLibrary = NodeLoaderLibrary::sharedNodeLoaderLibrary();
 
@@ -133,4 +107,30 @@ void MainScene::onKeyReleased(EventKeyboard::KeyCode keyCode, Event *event) {
     if (keyCode == EventKeyboard::KeyCode::KEY_BACKSPACE) {
         CCDirector::sharedDirector()->end();
     }
+}
+
+float applyScaleForNode(cocos2d::CCNode* node) {
+    cocos2d::CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    float scale = std::min(winSize.width / node->getContentSize().width,
+                           winSize.height / node->getContentSize().height);
+    node->setScale(scale);
+    node->setPosition(ccp((winSize.width - node->getContentSize().width * scale) / 2,
+                          (winSize.height - node->getContentSize().height * scale) / 2));
+    
+    return scale;
+}
+
+void fill(cocos2d::CCNode* targetNode) {
+    CCPoint leftBottom =
+    targetNode->getParent()->convertToWorldSpace(targetNode->getPosition());
+    CCPoint rightTop =
+    targetNode->getParent()->convertToWorldSpace(
+                                                 ccpAdd(targetNode->getPosition(), ccpFromSize(targetNode->getContentSize())));
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    float scaleX = winSize.width / (rightTop.x - leftBottom.x);
+    float scaleY = winSize.height / (rightTop.y - leftBottom.y);
+    
+    targetNode->setScale(MAX(scaleX, scaleY));
 }

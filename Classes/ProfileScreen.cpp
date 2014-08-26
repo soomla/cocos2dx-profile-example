@@ -2,6 +2,7 @@
 // Created by Simon Grinberg on 24/08/14.
 //
 
+#include <time.h>
 #include "ProfileScreen.h"
 #include "MainScene.h"
 #include "CCSoomlaEventDispatcher.h"
@@ -71,15 +72,15 @@ bool ProfileScreen::init() {
     vShift -= relativeY(60.0f, visibleSize.height);
     
     storyButton = createActionButton(layout,
-                                     "profile/BTN-ShareStory-Normal.png", "profile/BTN-ShareStory-Press.png", "profile/BTN-ShareStory-Disable.png", "I Love SOOMLA!",
-                                vShift, STATUS_BUTTON_TAG, scaleX, scaleY, visibleSize);
+                                     "profile/BTN-ShareStory-Normal.png", "profile/BTN-ShareStory-Press.png", "profile/BTN-ShareStory-Disable.png", "Full story of The SOOMBOT!",
+                                vShift, STORY_BUTTON_TAG, scaleX, scaleY, visibleSize);
     
     vShift -= storyButton->getSize().height * scaleY;
     vShift -= relativeY(60.0f, visibleSize.height);
     
     uploadButton = createActionButton(layout,
-                                      "profile/BTN-Upload-Normal.png", "profile/BTN-Upload-Press.png", "profile/BTN-Upload-Disable.png", "I Love SOOMLA!",
-                                vShift, STATUS_BUTTON_TAG, scaleX, scaleY, visibleSize);
+                                      "profile/BTN-Upload-Normal.png", "profile/BTN-Upload-Press.png", "profile/BTN-Upload-Disable.png", "Screenshot",
+                                vShift, UPLOAD_BUTTON_TAG, scaleX, scaleY, visibleSize);
     
     vShift -= uploadButton->getSize().height * scaleY;
     vShift -= relativeY(150.0f, visibleSize.height);
@@ -102,20 +103,17 @@ bool ProfileScreen::init() {
     
     logoutButton->setVisible(false);
     logoutButton->setTouchEnabled(true);
+    logoutButton->setEnabled(false);
     logoutButton->addTouchEventListener(CC_CALLBACK_2(ProfileScreen::onClicked, this));
     layout->addChild(logoutButton);
-    
-    _logText = ui::Text::create();
-    _logText->retain();
-    _logText->setString("<Nothing here>");
-    _logText->setPosition(Vec2(visibleSize.width / 2.0f, _logText->getSize().height / 2));
-    layout->addChild(_logText);
 
     this->addChild(layout);
 
     std::function<void(EventCustom *)> handleLoginFinished = [this](EventCustom *event) {
         logoutButton->setVisible(true);
+        logoutButton->setEnabled(true);
         loginButton->setVisible(false);
+        loginButton->setEnabled(false);
         
         shareButton->setEnabled(true);
         shareButton->setBright(true);
@@ -128,12 +126,14 @@ bool ProfileScreen::init() {
         
         soomla::CCError *profileError = nullptr;
         soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
-//        soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, nullptr, &profileError);
+        soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, nullptr, &profileError);
     };
     
     std::function<void(EventCustom *)> handleLogoutFinished = [this](EventCustom *event) {
         logoutButton->setVisible(false);
+        logoutButton->setEnabled(false);
         loginButton->setVisible(true);
+        loginButton->setEnabled(true);
         
         shareButton->setEnabled(false);
         shareButton->setBright(false);
@@ -165,8 +165,6 @@ bool ProfileScreen::init() {
 
 
 ProfileScreen::~ProfileScreen() {
-    CC_SAFE_RELEASE(_userText);
-    CC_SAFE_RELEASE(_logText);
 }
 
 void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchType) {
@@ -177,13 +175,22 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
             soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, &profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "My status", nullptr, &profileError);
+            soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", nullptr, &profileError);
         }
         else if (sender->getActionTag() == STORY_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "My status", nullptr, &profileError);
+            soomla::CCProfileController::getInstance()->updateStory(soomla::FACEBOOK,
+                                                                    "This is the story of a very strong and brave SOOMBOT on his jurney from SOOMBOTIA to a far away galaxy. That galaxy contains a blue planet where all human game developers love to eat food spiced with marshmallow.",
+                                                                    "The story of SOOMBOT (Profile Test App)",
+                                                                    "SOOMBOT Story",
+                                                                    "DESCRIPTION",
+                                                                    "http://about.soom.la/soombots",
+                                                                    "http://about.soom.la/wp-content/uploads/2014/05/330x268-spockbot.png",
+                                                                    nullptr,
+                                                                    &profileError);
         }
         else if (sender->getActionTag() == UPLOAD_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "My status", nullptr, &profileError);
+            std::string path = saveScreenshot();
+            soomla::CCProfileController::getInstance()->uploadImage(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", path.c_str(), nullptr, &profileError);
         }
         else if (sender->getActionTag() == LOGOUT_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->logout(soomla::FACEBOOK, &profileError);
@@ -234,5 +241,34 @@ cocos2d::ui::Button *ProfileScreen::createActionButton(cocos2d::ui::Layout *pare
     
     parent->addChild(button);
     
+    Text *label = ui::Text::create(title, "GoodDog.otf", 40);
+    label->setColor(Color3B::BLACK);
+    label->setAnchorPoint(Vec2(0.0f, 1.0f));
+    label->setSize(Size(relativeX(280.0f, visibleSize.width), relativeY(100.0f, visibleSize.height)));
+    label->ignoreContentAdaptWithSize(false);
+    label->setTextHorizontalAlignment(cocos2d::TextHAlignment::LEFT);
+    label->setTextVerticalAlignment(cocos2d::TextVAlignment::CENTER);
+    label->setScale(scaleX, scaleY);
+    label->setPosition(Vec2(relativeX(270.0f, visibleSize.width), posY - (12.0f * scaleY)));
+    parent->addChild(label);
+    
     return button;
+}
+
+std::string ProfileScreen::saveScreenshot() const {
+    Size screen = Director::getInstance()->getWinSize();
+    
+    RenderTexture *tex = RenderTexture::create(int(screen.width), int(screen.height));
+    tex->retain();
+    
+    tex->setPosition(Vec2(screen.width/2.0f, screen.height/2.0f));
+    
+    tex->begin();
+    Director::getInstance()->getRunningScene()->visit();
+    tex->end();
+    
+    __String *path = __String::createWithFormat("%s%d.png", "screenshot_", int(time(0)));
+    tex->saveToFile(path->getCString(), Image::Format::PNG);
+    
+    return FileUtils::getInstance()->getWritablePath() + path->getCString();
 }

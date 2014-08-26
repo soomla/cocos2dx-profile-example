@@ -35,7 +35,7 @@ void ProfileEventHandler::onLogoutFailed(soomla::CCProvider provider, cocos2d::_
 void ProfileEventHandler::onLogoutFinished(soomla::CCProvider provider) {
     log("%s Logout from %s has finished", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString());
     
-    EventCustom customEvent(soomla::CCProfileConsts::EVENT_LOGIN_FINISHED);
+    EventCustom customEvent(soomla::CCProfileConsts::EVENT_LOGOUT_FINISHED);
     customEvent.setUserData(&provider);
     Director::getInstance()->getEventDispatcher()->dispatchEvent(&customEvent);
 }
@@ -51,6 +51,12 @@ void ProfileEventHandler::onGetContactsFailed(soomla::CCProvider provider, cocos
 
 void ProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, cocos2d::__Array *contactsDict) {
     log("%s Get contacts from %s has finished", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString());
+    
+    for (int i = 0; i < contactsDict->count(); ++i){
+        soomla::CCUserProfile * contact = dynamic_cast<soomla::CCUserProfile *>(contactsDict->getObjectAtIndex(i));
+        
+        log("%s CONTACT %s %s", TAG, contact->getFirstName()->getCString(), contact->getLastName()->getCString());
+    }
 }
 
 void ProfileEventHandler::onGetContactsStarted(soomla::CCProvider provider) {
@@ -66,7 +72,7 @@ void ProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d
     log("%s Get feed from %s has finished", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString());
     
     for (int i = 0; i < feedList->count(); ++i){
-        log("FEED %s", (dynamic_cast<__String*>(feedList->getObjectAtIndex(i))->getCString()));
+        log("%s FEED %s", TAG, (dynamic_cast<__String *>(feedList->getObjectAtIndex(i))->getCString()));
     }
 }
 

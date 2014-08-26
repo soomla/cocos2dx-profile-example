@@ -14,8 +14,6 @@ public:
     static cocos2d::Scene* createScene();
 
     ProfileScreen():
-            _userText(NULL),
-            _logText(NULL),
             shareButton(NULL),
             storyButton(NULL),
             uploadButton(NULL),
@@ -29,9 +27,6 @@ public:
     virtual ~ProfileScreen();
 
     void onClicked(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType touchType);
-
-    cocos2d::ui::Text *_userText;
-    cocos2d::ui::Text *_logText;
     
 private:
     
@@ -45,11 +40,12 @@ private:
     float relativeY(float designY, float screenHeight);
     cocos2d::ui::Button *createActionButton(cocos2d::ui::Layout *parent,
                                             const std::string &normalImage,
-                                            const std::string& selectedImage ,
-                                            const std::string& disableImage,
-                                            const std::string& title,
+                                            const std::string &selectedImage ,
+                                            const std::string &disableImage,
+                                            const std::string &title,
                                             float posY,
-                                            int actionTag, float scaleX, float scaleY, const cocos2d::Size& visibleSize);
+                                            int actionTag, float scaleX, float scaleY, const cocos2d::Size &visibleSize);
+    std::string saveScreenshot() const;
 };
 
 

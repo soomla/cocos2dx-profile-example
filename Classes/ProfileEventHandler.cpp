@@ -96,10 +96,6 @@ void ProfileEventHandler::onSocialActionStartedEvent(soomla::CCProvider provider
         soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString());
 }
 
-void ProfileEventHandler::onRewardGivenEvent(soomla::CCReward *reward) {
-    log("%s %s", TAG, "onRewardGivenEvent");
-}
-
 void ProfileEventHandler::onUserProfileUpdatedEvent(soomla::CCUserProfile *userProfile) {
     log("%s %s", TAG, "onUserProfileUpdatedEvent");
     

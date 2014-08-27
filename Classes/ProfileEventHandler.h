@@ -34,7 +34,6 @@ public:
     virtual void onSocialActionStartedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType);
     
     virtual void onUserProfileUpdatedEvent(soomla::CCUserProfile *userProfile);
-    virtual void onRewardGivenEvent(soomla::CCReward *reward);
 };
 
 

@@ -16,22 +16,41 @@
 
 #include "AppDelegate.h"
 #include "ProfileScreen.h"
+#include "CoreEventHandler.h"
 #include "ProfileEventHandler.h"
 #include "CCServiceManager.h"
 #include "CCProfileService.h"
+#include "MuffinRushAssets.h"
+#include "CCServiceManager.h"
+#include "CCStoreService.h"
+#include "CCCoreEventDispatcher.h"
 
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
     handler = new ProfileEventHandler();
+    coreHandler = new CoreEventHandler();
 }
 
 AppDelegate::~AppDelegate() 
 {
     soomla::CCProfileEventDispatcher::getInstance()->removeEventHandler(handler);
+    soomla::CCCoreEventDispatcher::getInstance()->removeEventHandler(coreHandler);
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+    
+    __Dictionary *commonParams = __Dictionary::create();
+    commonParams->setObject(__String::create("ExampleCustomSecret"), "customSecret");
+    soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);
+    
+    MuffinRushAssets *assets = MuffinRushAssets::create();
+    
+    __Dictionary *storeParams = __Dictionary::create();
+    storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey");
+    
+    soomla::CCCoreEventDispatcher::getInstance()->addEventHandler(coreHandler);
+    soomla::CCStoreService::initShared(assets, storeParams);
     
     __Dictionary *profileParams = __Dictionary::create();
     

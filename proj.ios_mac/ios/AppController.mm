@@ -29,6 +29,7 @@
 #import "RootViewController.h"
 #import "ServiceManager.h"
 #import "ProfileService.h"
+#import "StoreService.h"
 
 @implementation AppController
 
@@ -41,6 +42,7 @@ static AppDelegate s_sharedApplication;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
+    [[ServiceManager sharedServiceManager] registerService:[StoreService sharedStoreService]];
 
     // Override point for customization after application launch.
 

@@ -4,9 +4,10 @@
 
 #include <time.h>
 #include "ProfileScreen.h"
-#include "MainScene.h"
 #include "CCSoomlaEventDispatcher.h"
 #include "CCDomainFactory.h"
+#include "CCVirtualItemReward.h"
+#include "MuffinRushAssets.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -38,6 +39,11 @@ bool ProfileScreen::init() {
     if (!Layer::init()) {
         return false;
     }
+    
+    loginReward = soomla::CCVirtualItemReward::create(__String::create("login_reward"),
+                                                      __String::create("Login Reward"),
+                                                      __Bool::create(false), __Integer::create(100), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    loginReward->retain();
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -67,6 +73,7 @@ bool ProfileScreen::init() {
     shareButton = createActionButton(layout,
                                      "profile/BTN-Share-Normal.png", "profile/BTN-Share-Press.png", "profile/BTN-Share-Disable.png", "I Love SOOMLA!",
                                 vShift, STATUS_BUTTON_TAG, scaleX, scaleY, visibleSize);
+    shareButton->retain();
     
     vShift -= shareButton->getSize().height * scaleY;
     vShift -= relativeY(60.0f, visibleSize.height);
@@ -74,6 +81,7 @@ bool ProfileScreen::init() {
     storyButton = createActionButton(layout,
                                      "profile/BTN-ShareStory-Normal.png", "profile/BTN-ShareStory-Press.png", "profile/BTN-ShareStory-Disable.png", "Full story of The SOOMBOT!",
                                 vShift, STORY_BUTTON_TAG, scaleX, scaleY, visibleSize);
+    storyButton->retain();
     
     vShift -= storyButton->getSize().height * scaleY;
     vShift -= relativeY(60.0f, visibleSize.height);
@@ -81,11 +89,13 @@ bool ProfileScreen::init() {
     uploadButton = createActionButton(layout,
                                       "profile/BTN-Upload-Normal.png", "profile/BTN-Upload-Press.png", "profile/BTN-Upload-Disable.png", "Screenshot",
                                 vShift, UPLOAD_BUTTON_TAG, scaleX, scaleY, visibleSize);
+    uploadButton->retain();
     
     vShift -= uploadButton->getSize().height * scaleY;
     vShift -= relativeY(150.0f, visibleSize.height);
     
     loginButton = ui::Button::create("profile/BTN-Connect.png", "profile/BTN-Connect-Press.png", "profile/BTN-Connect.png");
+    loginButton->retain();
     loginButton->setActionTag(LOGIN_BUTTON_TAG);
     loginButton->setAnchorPoint(Vec2(0.0f, 1.0f));
     loginButton->setScale(scaleX, scaleY);
@@ -96,6 +106,7 @@ bool ProfileScreen::init() {
     layout->addChild(loginButton);
     
     logoutButton = ui::Button::create("profile/BTN-LogOut.png", "profile/BTN-LogOut-Press.png", "profile/BTN-LogOut.png");
+    logoutButton->retain();
     logoutButton->setActionTag(LOGOUT_BUTTON_TAG);
     logoutButton->setAnchorPoint(Vec2(0.0f, 1.0f));
     logoutButton->setScale(scaleX, scaleY);
@@ -125,7 +136,7 @@ bool ProfileScreen::init() {
         uploadButton->setBright(true);
         
         soomla::CCError *profileError = nullptr;
-        soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
+//        soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
         soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, nullptr, &profileError);
     };
     
@@ -165,6 +176,11 @@ bool ProfileScreen::init() {
 
 
 ProfileScreen::~ProfileScreen() {
+    CC_SAFE_DELETE(shareButton);
+    CC_SAFE_DELETE(storyButton);
+    CC_SAFE_DELETE(uploadButton);
+    CC_SAFE_DELETE(loginButton);
+    CC_SAFE_DELETE(logoutButton);
 }
 
 void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchType) {
@@ -172,7 +188,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
         auto sender = static_cast<Widget *>(ref);
         soomla::CCError *profileError = nullptr;
         if (sender->getActionTag() == LOGIN_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, &profileError);
+            soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", nullptr, &profileError);

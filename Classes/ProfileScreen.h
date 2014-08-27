@@ -8,6 +8,8 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "Cocos2dxProfile.h"
+#include "CCReward.h"
+#include "MuffinRushAssets.h"
 
 class ProfileScreen : public cocos2d::Layer {
 public:
@@ -18,7 +20,10 @@ public:
             storyButton(NULL),
             uploadButton(NULL),
             loginButton(NULL),
-            logoutButton(NULL)
+            logoutButton(NULL),
+            loginReward(NULL),
+            shareReward(NULL),
+            uploadReward(NULL)
             {}
     virtual bool init();
 
@@ -35,6 +40,9 @@ private:
     cocos2d::ui::Button *uploadButton;
     cocos2d::ui::Button *loginButton;
     cocos2d::ui::Button *logoutButton;
+    soomla::CCReward *loginReward;
+    soomla::CCReward *shareReward;
+    soomla::CCReward *uploadReward;
 
     float relativeX(float designX, float screenWidth);
     float relativeY(float designY, float screenHeight);

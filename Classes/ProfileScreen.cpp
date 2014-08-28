@@ -45,6 +45,16 @@ bool ProfileScreen::init() {
                                                       __String::create("Login Reward"),
                                                       __Bool::create(false), __Integer::create(100), __String::create(MUFFIN_CURRENCY_ITEM_ID));
     loginReward->retain();
+    
+    shareReward = soomla::CCVirtualItemReward::create(__String::create("share_reward"),
+                                                      __String::create("Share Reward"),
+                                                      __Bool::create(false), __Integer::create(150), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    shareReward->retain();
+    
+    uploadReward = soomla::CCVirtualItemReward::create(__String::create("upload_reward"),
+                                                      __String::create("Upload Reward"),
+                                                      __Bool::create(false), __Integer::create(200), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    uploadReward->retain();
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -192,7 +202,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
             soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", nullptr, &profileError);
+            soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", shareReward, &profileError);
         }
         else if (sender->getActionTag() == STORY_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->updateStory(soomla::FACEBOOK,
@@ -227,7 +237,7 @@ void ProfileScreen::screenshotSavedCallback(float dt) {
     soomla::CCProfileController::getInstance()->uploadImage(soomla::FACEBOOK,
                                                             "I love SOOMLA! http://www.soom.la",
                                                             screenshotPath.c_str(),
-                                                            nullptr,
+                                                            uploadReward,
                                                             &profileError);
     if (profileError) {
         MessageBox(profileError->getInfo(), "Error");

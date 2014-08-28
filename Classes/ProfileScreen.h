@@ -23,7 +23,8 @@ public:
             logoutButton(NULL),
             loginReward(NULL),
             shareReward(NULL),
-            uploadReward(NULL)
+            uploadReward(NULL),
+            screenshotPath("")
             {}
     virtual bool init();
 
@@ -43,6 +44,7 @@ private:
     soomla::CCReward *loginReward;
     soomla::CCReward *shareReward;
     soomla::CCReward *uploadReward;
+    std::string screenshotPath;
 
     float relativeX(float designX, float screenWidth);
     float relativeY(float designY, float screenHeight);
@@ -54,6 +56,7 @@ private:
                                             float posY,
                                             int actionTag, float scaleX, float scaleY, const cocos2d::Size &visibleSize);
     std::string saveScreenshot() const;
+    void screenshotSavedCallback(float dt);
 };
 
 

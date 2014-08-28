@@ -3,6 +3,7 @@
 //
 
 #include <time.h>
+#include <unistd.h>
 #include "ProfileScreen.h"
 #include "CCSoomlaEventDispatcher.h"
 #include "CCDomainFactory.h"
@@ -136,7 +137,7 @@ bool ProfileScreen::init() {
         uploadButton->setBright(true);
         
         soomla::CCError *profileError = nullptr;
-//        soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
+        soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
         soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, nullptr, &profileError);
     };
     
@@ -188,7 +189,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
         auto sender = static_cast<Widget *>(ref);
         soomla::CCError *profileError = nullptr;
         if (sender->getActionTag() == LOGIN_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
+            soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, nullptr, &profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", nullptr, &profileError);
@@ -205,8 +206,8 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
                                                                     &profileError);
         }
         else if (sender->getActionTag() == UPLOAD_BUTTON_TAG) {
-            std::string path = saveScreenshot();
-            soomla::CCProfileController::getInstance()->uploadImage(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", path.c_str(), nullptr, &profileError);
+            screenshotPath = saveScreenshot();
+            this->scheduleOnce(schedule_selector(ProfileScreen::screenshotSavedCallback), 1.0f);
         }
         else if (sender->getActionTag() == LOGOUT_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->logout(soomla::FACEBOOK, &profileError);
@@ -217,6 +218,19 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
         if (profileError) {
             MessageBox(profileError->getInfo(), "Error");
         }
+    }
+}
+
+void ProfileScreen::screenshotSavedCallback(float dt) {
+    soomla::CCError *profileError = nullptr;
+    log("ASDASDASDASD %d", FileUtils::getInstance()->isFileExist(screenshotPath));
+    soomla::CCProfileController::getInstance()->uploadImage(soomla::FACEBOOK,
+                                                            "I love SOOMLA! http://www.soom.la",
+                                                            screenshotPath.c_str(),
+                                                            nullptr,
+                                                            &profileError);
+    if (profileError) {
+        MessageBox(profileError->getInfo(), "Error");
     }
 }
 
@@ -285,6 +299,8 @@ std::string ProfileScreen::saveScreenshot() const {
     
     __String *path = __String::createWithFormat("%s%d.png", "screenshot_", int(time(0)));
     tex->saveToFile(path->getCString(), Image::Format::PNG);
+//    Image *image = tex->newImage();
+//    image->saveToFile(FileUtils::getInstance()->getWritablePath() + path->getCString());
     
     return FileUtils::getInstance()->getWritablePath() + path->getCString();
 }

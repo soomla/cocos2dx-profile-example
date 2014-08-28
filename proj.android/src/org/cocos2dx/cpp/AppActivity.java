@@ -27,6 +27,7 @@ THE SOFTWARE.
 package org.cocos2dx.cpp;
 
 import com.soomla.cocos2dx.common.ServiceManager;
+import com.soomla.cocos2dx.profile.ProfileService;
 import com.soomla.cocos2dx.store.StoreService;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
@@ -43,6 +44,7 @@ public class AppActivity extends Cocos2dxActivity {
         serviceManager.setActivity(this);
         serviceManager.setGlSurfaceView(glSurfaceView);
         serviceManager.registerService(StoreService.getInstance());
+        serviceManager.registerService(ProfileService.getInstance());
 
         return glSurfaceView;
     }

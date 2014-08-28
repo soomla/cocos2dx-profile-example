@@ -189,7 +189,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
         auto sender = static_cast<Widget *>(ref);
         soomla::CCError *profileError = nullptr;
         if (sender->getActionTag() == LOGIN_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, nullptr, &profileError);
+            soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", nullptr, &profileError);

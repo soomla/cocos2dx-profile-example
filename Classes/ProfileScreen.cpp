@@ -207,6 +207,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
         }
         else if (sender->getActionTag() == UPLOAD_BUTTON_TAG) {
             screenshotPath = saveScreenshot();
+            // Cocos2dx does not have a callback for saveToFile so creating a hacky solution
             this->scheduleOnce(schedule_selector(ProfileScreen::screenshotSavedCallback), 1.0f);
         }
         else if (sender->getActionTag() == LOGOUT_BUTTON_TAG) {
@@ -223,7 +224,6 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
 
 void ProfileScreen::screenshotSavedCallback(float dt) {
     soomla::CCError *profileError = nullptr;
-    log("ASDASDASDASD %d", FileUtils::getInstance()->isFileExist(screenshotPath));
     soomla::CCProfileController::getInstance()->uploadImage(soomla::FACEBOOK,
                                                             "I love SOOMLA! http://www.soom.la",
                                                             screenshotPath.c_str(),
@@ -299,8 +299,6 @@ std::string ProfileScreen::saveScreenshot() const {
     
     __String *path = __String::createWithFormat("%s%d.png", "screenshot_", int(time(0)));
     tex->saveToFile(path->getCString(), Image::Format::PNG);
-//    Image *image = tex->newImage();
-//    image->saveToFile(FileUtils::getInstance()->getWritablePath() + path->getCString());
     
     return FileUtils::getInstance()->getWritablePath() + path->getCString();
 }

@@ -57,6 +57,7 @@ private:
                                             int actionTag, float scaleX, float scaleY, const cocos2d::Size &visibleSize);
     std::string saveScreenshot() const;
     void screenshotSavedCallback(float dt);
+    void setLoggedInState();
 };
 
 

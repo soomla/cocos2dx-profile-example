@@ -132,19 +132,7 @@ bool ProfileScreen::init() {
     this->addChild(layout);
 
     std::function<void(EventCustom *)> handleLoginFinished = [this](EventCustom *event) {
-        logoutButton->setVisible(true);
-        logoutButton->setEnabled(true);
-        loginButton->setVisible(false);
-        loginButton->setEnabled(false);
-        
-        shareButton->setEnabled(true);
-        shareButton->setBright(true);
-        
-        storyButton->setEnabled(true);
-        storyButton->setBright(true);
-        
-        uploadButton->setEnabled(true);
-        uploadButton->setBright(true);
+        this->setLoggedInState();
         
         soomla::CCError *profileError = nullptr;
         soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
@@ -181,6 +169,17 @@ bool ProfileScreen::init() {
     
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(EventListenerCustom::create(soomla::CCProfileConsts::EVENT_LOGOUT_FINISHED, handleLogoutFinished),
                                                                  this);
+    
+    soomla::CCError *profileError = nullptr;
+    bool isLoggedIn =  soomla::CCProfileController::getInstance()->isLoggedIn(soomla::FACEBOOK, &profileError);
+    if (profileError) {
+        MessageBox(profileError->getInfo(), "Error");
+    }
+    else {
+        if (isLoggedIn) {
+            setLoggedInState();
+        }
+    }
 
     return true;
 }
@@ -311,4 +310,20 @@ std::string ProfileScreen::saveScreenshot() const {
     tex->saveToFile(path->getCString(), Image::Format::PNG);
     
     return FileUtils::getInstance()->getWritablePath() + path->getCString();
+}
+
+void ProfileScreen::setLoggedInState() {
+    logoutButton->setVisible(true);
+    logoutButton->setEnabled(true);
+    loginButton->setVisible(false);
+    loginButton->setEnabled(false);
+    
+    shareButton->setEnabled(true);
+    shareButton->setBright(true);
+    
+    storyButton->setEnabled(true);
+    storyButton->setBright(true);
+    
+    uploadButton->setEnabled(true);
+    uploadButton->setBright(true);
 }

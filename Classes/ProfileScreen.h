@@ -24,6 +24,7 @@ public:
             loginReward(NULL),
             shareReward(NULL),
             uploadReward(NULL),
+            likePageReward(NULL),
             screenshotPath("")
             {}
     virtual bool init();
@@ -44,6 +45,7 @@ private:
     soomla::CCReward *loginReward;
     soomla::CCReward *shareReward;
     soomla::CCReward *uploadReward;
+    soomla::CCReward *likePageReward;
     std::string screenshotPath;
 
     float relativeX(float designX, float screenWidth);

@@ -55,6 +55,11 @@ bool ProfileScreen::init() {
                                                       __String::create("Upload Reward"),
                                                       __Bool::create(false), __Integer::create(200), __String::create(MUFFIN_CURRENCY_ITEM_ID));
     uploadReward->retain();
+    
+    likePageReward = soomla::CCVirtualItemReward::create(__String::create("like_page_reward"),
+                                                       __String::create("Like Page Reward"),
+                                                       __Bool::create(false), __Integer::create(300), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    likePageReward->retain();
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
@@ -135,6 +140,7 @@ bool ProfileScreen::init() {
         this->setLoggedInState();
         
         soomla::CCError *profileError = nullptr;
+        soomla::CCProfileController::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
         soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
         soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, nullptr, &profileError);
     };

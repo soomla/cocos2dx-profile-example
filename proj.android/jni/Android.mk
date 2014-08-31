@@ -42,5 +42,5 @@ $(call import-module,editor-support/cocostudio)
 # $(call import-module,network)
 $(call import-module,extensions)
 
-$(call import-module,extensions/cocos2dx-store/android/jni)
-$(call import-module,extensions/cocos2dx-profile/android/jni)
+$(call import-module,extensions/cocos2dx-store)
+$(call import-module,extensions/cocos2dx-profile)

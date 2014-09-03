@@ -31,7 +31,7 @@ The example project uses the [cocos2dx-store](https://github.com/soomla/cocos2dx
     $ git clone git@github.com:soomla/cocos2dx-profile-example.git projects/cocos2dx-profile-example
     ```
 
-Note: Draw your attention, we use symlink to cocos2d-x in our example project. It relies on cocos2d-x availability in relative path. If you want to use the project from other location, update the symlink, or completely replace it with cocos2d-x folder.
+**Note**: We use a symlink to cocos2d-x in our example project. It relies on cocos2d-x availability in the relative path. If you want to use the project from a different location, update the symlink, or completely replace it with the cocos2d-x folder.
 
 #### Build instructions for Android
 
@@ -64,6 +64,20 @@ This project contains a single main scene:
 A good example of how to define an economy model can be found in [MuffinRushAssets](https://github.com/soomla/cocos2dx-profile-example/blob/master/Classes/MuffinRushAssets.cpp).
 
 This economy model is defined only to provide a way of granting meaningful rewards. In case you have no need for virtual economy rewards, or you don't want to grant rewards, you are not obligated to create any virtual economy.
+
+
+## Contribution
+
+We want you!
+
+Fork -> Clone -> Implement -> Insert Comments -> Test -> Pull-Request.
+
+We have great RESPECT for contributors.
+
+## Code Documentation
+
+cocos2dx-profile follows strict code documentation conventions. If you would like to contribute please read our [Documentation Guidelines](https://github.com/soomla/cocos2dx-profile/blob/master/documentation.md) and follow them. Clear, consistent  comments will make our code easy to understand.
+
 
 ## SOOMLA, Elsewhere ...
 

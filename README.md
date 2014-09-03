@@ -6,9 +6,14 @@ This project contains examples for implementing all of SOOMLA's interfaces and u
 
 The example project uses the [cocos2dx-store](https://github.com/soomla/cocos2dx-store) project as well, but this only to create a virtual economy and hand out meaningful rewards. The dependency to cocos2dx-store is completely optional.
 
+![SOOMLA's Profile Module](http://know.soom.la/img/tutorial_img/soomla_diagrams/Profile.png)
+
+## Facebook
+This example integrates to **Facebook** out-of-the-box, and provides a good example of how simple it is to integrate a social network into your game with the Profile module.
+
 ## Getting started
 
-1. Obtain the Cocos2d-x framework either from [Github](https://github.com/cocos2d/cocos2d-x) or from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure to use the latest stable 3rd version of cocos2d-x (we tested with v3.1).
+1. Obtain the Cocos2d-x framework either from [Github](https://github.com/cocos2d/cocos2d-x) or from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure to use the latest stable 3rd version of cocos2d-x (we tested with v3.2).
     ```
     $ git clone git@github.com:cocos2d/cocos2d-x.git
     ```

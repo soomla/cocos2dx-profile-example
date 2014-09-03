@@ -1,5 +1,5 @@
 .DS_Store
-.idea
+*.apk
 proj.android/assets
 proj.android/bin
 proj.android/gen

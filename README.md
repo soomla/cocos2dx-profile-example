@@ -13,7 +13,7 @@ The example project uses the [cocos2dx-store](https://github.com/soomla/cocos2dx
     $ git clone git@github.com:cocos2d/cocos2d-x.git
     ```
 
-2. Recursively clone our [soomla-cocos2dx-core](https://github.com/soomla/soomla-cocos2dx-core), [cocos2dx-store](https://github.com/soomla/cocos2dx-store) and [cocos2dx-profile](https://github.com/soomla/cocos2dx-profile) libraries into the `extensions` directory in the root of your Cocos2d-x framework.
+2. Clone our [soomla-cocos2dx-core](https://github.com/soomla/soomla-cocos2dx-core), [cocos2dx-store](https://github.com/soomla/cocos2dx-store) and [cocos2dx-profile](https://github.com/soomla/cocos2dx-profile) libraries into the `extensions` directory in the root of your Cocos2d-x framework.
     ```
     $ cd cocos2dx
     $ git clone git@github.com:soomla/soomla-cocos2dx-core.git extensions/soomla-cocos2dx-core

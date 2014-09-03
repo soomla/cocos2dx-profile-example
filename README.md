@@ -8,7 +8,7 @@ The example project uses the [cocos2dx-store](https://github.com/soomla/cocos2dx
 
 ## Getting started
 
-1. Obtain the Cocos2d-x framework either from [git](https://github.com/cocos2d/cocos2d-x) or from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure to use the latest stable 3rd version of cocos2d-x (we tested with v3.1).
+1. Obtain the Cocos2d-x framework either from [Github](https://github.com/cocos2d/cocos2d-x) or from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure to use the latest stable 3rd version of cocos2d-x (we tested with v3.1).
     ```
     $ git clone git@github.com:cocos2d/cocos2d-x.git
     ```

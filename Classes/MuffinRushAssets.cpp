@@ -308,7 +308,7 @@ bool MuffinRushAssets::init() {
             )
     );
 
-    mCurrencies = __Array::create(muffinCurrency, NULL);
+    mCurrencies = CCArray::create(muffinCurrency, NULL);
     mCurrencies->retain();
 
     mGoods = CCArray::create(muffincakeGood, pavlovaGood, tenPavlovaGoods, choclatecakeGood, creamcupGood, tenCreamcupGoods,
@@ -317,13 +317,13 @@ bool MuffinRushAssets::init() {
 							 deliveryVehicleGood3, deliveryVehicleGood4, fatCatGood, happiHippoGood, funkeyMonkeyGood, NULL);
     mGoods->retain();
 
-    mCurrencyPacks = __Array::create(tenmuffPack, fiftymuffPack, fourhundmuffPack, thousandmuffPack, NULL);
+    mCurrencyPacks = CCArray::create(tenmuffPack, fiftymuffPack, fourhundmuffPack, thousandmuffPack, NULL);
     mCurrencyPacks->retain();
 
-    mCategories = __Array::create(cakes, upgrades, characters, NULL);
+    mCategories = CCArray::create(cakes, upgrades, characters, NULL);
     mCategories->retain();
 
-    mNonConsumableItems = __Array::create(noAdsNoncons, NULL);
+    mNonConsumableItems = CCArray::create(noAdsNoncons, NULL);
     mNonConsumableItems->retain();
 
     return true;
@@ -341,23 +341,23 @@ int MuffinRushAssets::getVersion() {
     return 0;
 }
 
-cocos2d::__Array *MuffinRushAssets::getCurrencies() {
+cocos2d::CCArray *MuffinRushAssets::getCurrencies() {
     return mCurrencies;
 }
 
-cocos2d::__Array *MuffinRushAssets::getGoods() {
+cocos2d::CCArray *MuffinRushAssets::getGoods() {
     return mGoods;
 }
 
-cocos2d::__Array *MuffinRushAssets::getCurrencyPacks() {
+cocos2d::CCArray *MuffinRushAssets::getCurrencyPacks() {
     return mCurrencyPacks;
 }
 
-cocos2d::__Array *MuffinRushAssets::getCategories() {
+cocos2d::CCArray *MuffinRushAssets::getCategories() {
     return mCategories;
 }
 
-cocos2d::__Array *MuffinRushAssets::getNonConsumableItems() {
+cocos2d::CCArray *MuffinRushAssets::getNonConsumableItems() {
     return mNonConsumableItems;
 }
 

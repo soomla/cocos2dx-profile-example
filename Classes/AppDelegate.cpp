@@ -40,31 +40,27 @@ AppDelegate::~AppDelegate()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     
-    __Dictionary *commonParams = __Dictionary::create();
-    commonParams->setObject(__String::create("ExampleCustomSecret"), "customSecret");
+    CCDictionary *commonParams = CCDictionary::create();
+    commonParams->setObject(CCString::create("ExampleCustomSecret"), "customSecret");
     soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);
     
     MuffinRushAssets *assets = MuffinRushAssets::create();
     
-    __Dictionary *storeParams = __Dictionary::create();
-    storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey");
+    CCDictionary *storeParams = CCDictionary::create();
+    storeParams->setObject(CCString::create("ExamplePublicKey"), "androidPublicKey");
     
     soomla::CCCoreEventDispatcher::getInstance()->addEventHandler(coreHandler);
     soomla::CCStoreService::initShared(assets, storeParams);
     
-    __Dictionary *profileParams = __Dictionary::create();
+    CCDictionary *profileParams = CCDictionary::create();
     
     // initialize director
-    auto director = Director::getInstance();
+    CCDirector *director = CCDirector::sharedDirector();
     
     soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
     soomla::CCProfileService::initShared(profileParams);
     
-    auto glview = director->getOpenGLView();
-    if(!glview) {
-        glview = GLView::create("My Game");
-        director->setOpenGLView(glview);
-    }
+    CCDirector::sharedDirector()->setOpenGLView(CCEGLView::sharedOpenGLView());
 
     // turn on display FPS
     director->setDisplayStats(true);
@@ -73,7 +69,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = ProfileScreen::createScene();
+    CCScene *scene = ProfileScreen::createScene();
 
     // run
     director->runWithScene(scene);
@@ -83,7 +79,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
-    Director::getInstance()->stopAnimation();
+    CCDirector::sharedDirector()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
     // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
@@ -91,7 +87,7 @@ void AppDelegate::applicationDidEnterBackground() {
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
-    Director::getInstance()->startAnimation();
+    CCDirector::sharedDirector()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();

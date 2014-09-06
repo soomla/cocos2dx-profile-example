@@ -22,14 +22,14 @@
 #define __ProfileScreen_H_
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
+#include "System/CocosGUI.h"
 #include "Cocos2dxProfile.h"
 #include "CCReward.h"
 #include "MuffinRushAssets.h"
 
-class ProfileScreen : public cocos2d::Layer {
+class ProfileScreen : public cocos2d::ui::TouchGroup {
 public:
-    static cocos2d::Scene* createScene();
+    static cocos2d::CCScene* createScene();
 
     ProfileScreen():
             shareButton(NULL),
@@ -49,7 +49,11 @@ public:
 
     virtual ~ProfileScreen();
 
-    void onClicked(cocos2d::Ref *ref, cocos2d::ui::Widget::TouchEventType touchType);
+    void onClicked(cocos2d::CCObject *ref, cocos2d::ui::TouchEventType touchType);
+    
+    void onLoginFinished(CCObject* obj);
+    void onLogoutFinished(CCObject* obj);
+    void onProfileUpdated(CCObject* obj);
     
 private:
     
@@ -72,7 +76,7 @@ private:
                                             const std::string &disableImage,
                                             const std::string &title,
                                             float posY,
-                                            int actionTag, float scaleX, float scaleY, const cocos2d::Size &visibleSize);
+                                            int actionTag, float scaleX, float scaleY, const cocos2d::CCSize &visibleSize);
     std::string saveScreenshot() const;
     void screenshotSavedCallback(float dt);
     void setLoggedInState();

@@ -38,12 +38,12 @@ using namespace cocos2d::ui;
 #define DESIGN_WIDTH 640.0f
 #define DESIGN_HEIGHT 1136.0f
 
-cocos2d::Scene *ProfileScreen::createScene() {
+cocos2d::CCScene *ProfileScreen::createScene() {
     // 'scene' is an autorelease object
-    auto scene = Scene::create();
+    CCScene *scene = CCScene::create();
 
     // 'layer' is an autorelease object
-    auto layer = ProfileScreen::create();
+    CCLayer *layer = ProfileScreen::create();
 
     // add layer as a child to scene
     scene->addChild(layer);
@@ -53,39 +53,41 @@ cocos2d::Scene *ProfileScreen::createScene() {
 }
 
 bool ProfileScreen::init() {
-    if (!Layer::init()) {
+    if (!TouchGroup::init()) {
         return false;
     }
     
-    loginReward = soomla::CCVirtualItemReward::create(__String::create("login_reward"),
-                                                      __String::create("Login Reward"),
-                                                      __Bool::create(false), __Integer::create(100), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    setTouchEnabled(true);
+    
+    loginReward = soomla::CCVirtualItemReward::create(CCString::create("login_reward"),
+                                                      CCString::create("Login Reward"),
+                                                      CCBool::create(false), CCInteger::create(100), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     loginReward->retain();
     
-    shareReward = soomla::CCVirtualItemReward::create(__String::create("share_reward"),
-                                                      __String::create("Share Reward"),
-                                                      __Bool::create(false), __Integer::create(150), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    shareReward = soomla::CCVirtualItemReward::create(CCString::create("share_reward"),
+                                                      CCString::create("Share Reward"),
+                                                      CCBool::create(false), CCInteger::create(150), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     shareReward->retain();
     
-    uploadReward = soomla::CCVirtualItemReward::create(__String::create("upload_reward"),
-                                                      __String::create("Upload Reward"),
-                                                      __Bool::create(false), __Integer::create(200), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    uploadReward = soomla::CCVirtualItemReward::create(CCString::create("upload_reward"),
+                                                      CCString::create("Upload Reward"),
+                                                      CCBool::create(false), CCInteger::create(200), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     uploadReward->retain();
     
-    likePageReward = soomla::CCVirtualItemReward::create(__String::create("like_page_reward"),
-                                                       __String::create("Like Page Reward"),
-                                                       __Bool::create(false), __Integer::create(300), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+    likePageReward = soomla::CCVirtualItemReward::create(CCString::create("like_page_reward"),
+                                                       CCString::create("Like Page Reward"),
+                                                       CCBool::create(false), CCInteger::create(300), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     likePageReward->retain();
 
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 
     Layout *layout = Layout::create();
 
     float vShift = visibleSize.height;
     
-    ImageView *background = ui::ImageView::create("profile/BG.png");
-    background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+    ImageView *background = ImageView::create();
+    background->loadTexture("profile/BG.png");
+    background->setPosition(CCPoint(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
     layout->addChild(background);
     
     float scaleX = visibleSize.width / background->getSize().width;
@@ -93,10 +95,11 @@ bool ProfileScreen::init() {
     
     background->setScale(scaleX, scaleY);
     
-    ImageView *header = ui::ImageView::create("profile/Headline.png");
-    header->setAnchorPoint(Vec2(0.0f, 1.0f));
+    ImageView *header = ImageView::create();
+    header->loadTexture("profile/Headline.png");
+    header->setAnchorPoint(CCPoint(0.0f, 1.0f));
     header->setScale(scaleX, scaleY);
-    header->setPosition(Vec2(0.0f, vShift));
+    header->setPosition(CCPoint(0.0f, vShift));
     layout->addChild(header);
     vShift -= header->getSize().height * scaleY;
     
@@ -126,76 +129,47 @@ bool ProfileScreen::init() {
     vShift -= uploadButton->getSize().height * scaleY;
     vShift -= relativeY(150.0f, visibleSize.height);
     
-    loginButton = ui::Button::create("profile/BTN-Connect.png", "profile/BTN-Connect-Press.png", "profile/BTN-Connect.png");
+    loginButton = ui::Button::create();
+    loginButton->loadTextures("profile/BTN-Connect.png", "profile/BTN-Connect-Press.png", "profile/BTN-Connect.png");
     loginButton->retain();
     loginButton->setActionTag(LOGIN_BUTTON_TAG);
-    loginButton->setAnchorPoint(Vec2(0.0f, 1.0f));
+    loginButton->setAnchorPoint(CCPoint(0.0f, 1.0f));
     loginButton->setScale(scaleX, scaleY);
-    loginButton->setPosition(Vec2(relativeX(30.0f, visibleSize.width), vShift));
+    loginButton->setPosition(CCPoint(relativeX(30.0f, visibleSize.width), vShift));
     
     loginButton->setTouchEnabled(true);
-    loginButton->addTouchEventListener(CC_CALLBACK_2(ProfileScreen::onClicked, this));
+    loginButton->addTouchEventListener(this, toucheventselector(ProfileScreen::onClicked));
     layout->addChild(loginButton);
     
-    logoutButton = ui::Button::create("profile/BTN-LogOut.png", "profile/BTN-LogOut-Press.png", "profile/BTN-LogOut.png");
+    logoutButton = ui::Button::create();
+    logoutButton->loadTextures("profile/BTN-LogOut.png", "profile/BTN-LogOut-Press.png", "profile/BTN-LogOut.png");
     logoutButton->retain();
     logoutButton->setActionTag(LOGOUT_BUTTON_TAG);
-    logoutButton->setAnchorPoint(Vec2(0.0f, 1.0f));
+    logoutButton->setAnchorPoint(CCPoint(0.0f, 1.0f));
     logoutButton->setScale(scaleX, scaleY);
-    logoutButton->setPosition(Vec2(relativeX(30.0f, visibleSize.width), vShift));
+    logoutButton->setPosition(CCPoint(relativeX(30.0f, visibleSize.width), vShift));
     
     logoutButton->setVisible(false);
     logoutButton->setTouchEnabled(true);
     logoutButton->setEnabled(false);
-    logoutButton->addTouchEventListener(CC_CALLBACK_2(ProfileScreen::onClicked, this));
+    logoutButton->addTouchEventListener(this, toucheventselector(ProfileScreen::onClicked));
     layout->addChild(logoutButton);
 
-    this->addChild(layout);
-
-    std::function<void(EventCustom *)> handleLoginFinished = [this](EventCustom *event) {
-        this->setLoggedInState();
-        
-        soomla::CCError *profileError = nullptr;
-        soomla::CCProfileController::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
-        soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
-        soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, nullptr, &profileError);
-    };
+    this->addWidget(layout);
     
-    std::function<void(EventCustom *)> handleLogoutFinished = [this](EventCustom *event) {
-        logoutButton->setVisible(false);
-        logoutButton->setEnabled(false);
-        loginButton->setVisible(true);
-        loginButton->setEnabled(true);
-        
-        shareButton->setEnabled(false);
-        shareButton->setBright(false);
-        
-        storyButton->setEnabled(false);
-        storyButton->setBright(false);
-        
-        uploadButton->setEnabled(false);
-        uploadButton->setBright(false);
-    };
+    CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(ProfileScreen::onLoginFinished),
+                                                                  soomla::CCProfileConsts::EVENT_LOGIN_FINISHED, NULL);
     
-    std::function<void(EventCustom *)> handleProfileUpdatedFinished = [this](EventCustom *event) {
-        soomla::CCUserProfile *userProfile = (soomla::CCUserProfile *)(event->getUserData());
-        
-        log("%s %s has logged in", userProfile->getFirstName()->getCString(), userProfile->getLastName()->getCString());
-    };
+    CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(ProfileScreen::onProfileUpdated),
+                                                                  soomla::CCProfileConsts::EVENT_USER_PROFILE_UPDATED, NULL);
     
-    getEventDispatcher()->addEventListenerWithSceneGraphPriority(EventListenerCustom::create(soomla::CCProfileConsts::EVENT_LOGIN_FINISHED, handleLoginFinished),
-                                                                 this);
+    CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(ProfileScreen::onLogoutFinished),
+                                                                  soomla::CCProfileConsts::EVENT_LOGOUT_FINISHED, NULL);
     
-    getEventDispatcher()->addEventListenerWithSceneGraphPriority(EventListenerCustom::create(soomla::CCProfileConsts::EVENT_USER_PROFILE_UPDATED, handleProfileUpdatedFinished),
-                                                                 this);
-    
-    getEventDispatcher()->addEventListenerWithSceneGraphPriority(EventListenerCustom::create(soomla::CCProfileConsts::EVENT_LOGOUT_FINISHED, handleLogoutFinished),
-                                                                 this);
-    
-    soomla::CCError *profileError = nullptr;
+    soomla::CCError *profileError = NULL;
     bool isLoggedIn =  soomla::CCProfileController::getInstance()->isLoggedIn(soomla::FACEBOOK, &profileError);
     if (profileError) {
-        MessageBox(profileError->getInfo(), "Error");
+        CCMessageBox(profileError->getInfo(), "Error");
     }
     else {
         if (isLoggedIn) {
@@ -215,10 +189,41 @@ ProfileScreen::~ProfileScreen() {
     CC_SAFE_DELETE(logoutButton);
 }
 
-void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchType) {
-    if (touchType == Widget::TouchEventType::ENDED) {
-        auto sender = static_cast<Widget *>(ref);
-        soomla::CCError *profileError = nullptr;
+void ProfileScreen::onLoginFinished(CCObject* obj) {
+    this->setLoggedInState();
+    
+    soomla::CCError *profileError = NULL;
+    soomla::CCProfileController::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
+    soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, NULL, &profileError);
+    soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, NULL, &profileError);
+}
+
+void ProfileScreen::onLogoutFinished(CCObject* obj) {
+    logoutButton->setVisible(false);
+    logoutButton->setEnabled(false);
+    loginButton->setVisible(true);
+    loginButton->setEnabled(true);
+    
+    shareButton->setTouchEnabled(false);
+    shareButton->setBright(false);
+    
+    storyButton->setTouchEnabled(false);
+    storyButton->setBright(false);
+    
+    uploadButton->setTouchEnabled(false);
+    uploadButton->setBright(false);
+}
+
+void ProfileScreen::onProfileUpdated(CCObject* obj) {
+    soomla::CCUserProfile *userProfile = (soomla::CCUserProfile *)(obj);
+    
+    CCLOG("%s %s has logged in", userProfile->getFirstName()->getCString(), userProfile->getLastName()->getCString());
+}
+
+void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) {
+    if (touchType == TOUCH_EVENT_ENDED) {
+        Widget *sender = static_cast<Widget *>(ref);
+        soomla::CCError *profileError = NULL;
         if (sender->getActionTag() == LOGIN_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
         }
@@ -233,7 +238,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
                                                                     "DESCRIPTION",
                                                                     "http://about.soom.la/soombots",
                                                                     "http://about.soom.la/wp-content/uploads/2014/05/330x268-spockbot.png",
-                                                                    nullptr,
+                                                                    NULL,
                                                                     &profileError);
         }
         else if (sender->getActionTag() == UPLOAD_BUTTON_TAG) {
@@ -248,20 +253,20 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
             return;
         }
         if (profileError) {
-            MessageBox(profileError->getInfo(), "Error");
+            CCMessageBox(profileError->getInfo(), "Error");
         }
     }
 }
 
 void ProfileScreen::screenshotSavedCallback(float dt) {
-    soomla::CCError *profileError = nullptr;
+    soomla::CCError *profileError = NULL;
     soomla::CCProfileController::getInstance()->uploadImage(soomla::FACEBOOK,
                                                             "I love SOOMLA! http://www.soom.la",
                                                             screenshotPath.c_str(),
                                                             uploadReward,
                                                             &profileError);
     if (profileError) {
-        MessageBox(profileError->getInfo(), "Error");
+        CCMessageBox(profileError->getInfo(), "Error");
     }
 }
 
@@ -279,59 +284,64 @@ cocos2d::ui::Button *ProfileScreen::createActionButton(cocos2d::ui::Layout *pare
                                                        const std::string& disableImage,
                                                        const std::string& title,
                                                        float posY,
-                                                       int actionTag, float scaleX, float scaleY, const Size& visibleSize) {
+                                                       int actionTag, float scaleX, float scaleY, const CCSize& visibleSize) {
     
-    ImageView *bar = ui::ImageView::create("profile/BG-Bar.png");
-    bar->setAnchorPoint(Vec2(0.0f, 1.0f));
+    ImageView *bar = ImageView::create();
+    bar->loadTexture("profile/BG-Bar.png");
+    bar->setAnchorPoint(CCPoint(0.0f, 1.0f));
     bar->setScale(scaleX, scaleY);
-    bar->setPosition(Vec2(relativeX(65.0f, visibleSize.width), posY - (7.0f * scaleY)));
+    bar->setPosition(CCPoint(relativeX(65.0f, visibleSize.width), posY - (7.0f * scaleY)));
     parent->addChild(bar);
     
     Button *button;
     
-    button = ui::Button::create(normalImage, selectedImage, disableImage);
+    button = Button::create();
+    button->loadTextures(normalImage.c_str(), selectedImage.c_str(), disableImage.c_str());
     button->setActionTag(actionTag);
-    button->setAnchorPoint(Vec2(0.0f, 1.0f));
+    button->setAnchorPoint(CCPoint(0.0f, 1.0f));
     button->setScale(scaleX, scaleY);
-    button->setPosition(Vec2(relativeX(50.0f, visibleSize.width), posY));
+    button->setPosition(CCPoint(relativeX(50.0f, visibleSize.width), posY));
     
     button->setTouchEnabled(true);
-    button->addTouchEventListener(CC_CALLBACK_2(ProfileScreen::onClicked, this));
-    button->setEnabled(false);
+    button->addTouchEventListener(this, toucheventselector(ProfileScreen::onClicked));
+//    button->setEnabled(false);
     button->setBright(false);
     
     parent->addChild(button);
     
-    Text *label = ui::Text::create(title, "GoodDog.otf", 40);
-    label->setColor(Color3B::BLACK);
-    label->setAnchorPoint(Vec2(0.0f, 1.0f));
-    label->setSize(Size(relativeX(280.0f, visibleSize.width), relativeY(100.0f, visibleSize.height)));
+    Label *label = Label::create();
+    label->setFontName("GoodDog.otf");
+    label->setText(title);
+    label->setFontSize(20);
+    label->setColor(ccBLACK);
+    label->setAnchorPoint(CCPoint(0.0f, 1.0f));
+    label->setSize(CCSize(relativeX(280.0f, visibleSize.width), relativeY(100.0f, visibleSize.height)));
     label->ignoreContentAdaptWithSize(false);
-    label->setTextHorizontalAlignment(cocos2d::TextHAlignment::LEFT);
-    label->setTextVerticalAlignment(cocos2d::TextVAlignment::CENTER);
+    label->setTextHorizontalAlignment(kCCTextAlignmentLeft);
+    label->setTextVerticalAlignment(kCCVerticalTextAlignmentCenter);
     label->setScale(scaleX, scaleY);
-    label->setPosition(Vec2(relativeX(270.0f, visibleSize.width), posY - (12.0f * scaleY)));
+    label->setPosition(CCPoint(relativeX(270.0f, visibleSize.width), posY - (12.0f * scaleY)));
     parent->addChild(label);
     
     return button;
 }
 
 std::string ProfileScreen::saveScreenshot() const {
-    Size screen = Director::getInstance()->getWinSize();
+    CCSize screen = CCDirector::sharedDirector()->getWinSize();
     
-    RenderTexture *tex = RenderTexture::create(int(screen.width), int(screen.height));
+    CCRenderTexture *tex = CCRenderTexture::create(int(screen.width), int(screen.height));
     tex->retain();
     
-    tex->setPosition(Vec2(screen.width/2.0f, screen.height/2.0f));
+    tex->setPosition(CCPoint(screen.width/2.0f, screen.height/2.0f));
     
     tex->begin();
-    Director::getInstance()->getRunningScene()->visit();
+    CCDirector::sharedDirector()->getRunningScene()->visit();
     tex->end();
     
-    __String *path = __String::createWithFormat("%s%d.png", "screenshot_", int(time(0)));
-    tex->saveToFile(path->getCString(), Image::Format::PNG);
+    CCString *path = CCString::createWithFormat("%s%d.png", "screenshot_", int(time(0)));
+    tex->saveToFile(path->getCString(), kCCImageFormatPNG);
     
-    return FileUtils::getInstance()->getWritablePath() + path->getCString();
+    return CCFileUtils::sharedFileUtils()->getWritablePath() + path->getCString();
 }
 
 void ProfileScreen::setLoggedInState() {
@@ -340,12 +350,12 @@ void ProfileScreen::setLoggedInState() {
     loginButton->setVisible(false);
     loginButton->setEnabled(false);
     
-    shareButton->setEnabled(true);
+    shareButton->setTouchEnabled(true);
     shareButton->setBright(true);
     
-    storyButton->setEnabled(true);
+    storyButton->setTouchEnabled(true);
     storyButton->setBright(true);
     
-    uploadButton->setEnabled(true);
+    uploadButton->setTouchEnabled(true);
     uploadButton->setBright(true);
 }

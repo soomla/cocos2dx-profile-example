@@ -21,9 +21,9 @@
 USING_NS_CC;
 
 void CoreEventHandler::onRewardGivenEvent(soomla::CCReward *reward) {
-    log("%s Reward %s was given", TAG, reward->getName()->getCString());
+    CCLOG("%s Reward %s was given", TAG, reward->getName()->getCString());
 }
 
 void CoreEventHandler::onRewardTakenEvent(soomla::CCReward *reward) {
-    log("%s Reward %s was taken", TAG, reward->getName()->getCString());
+    CCLOG("%s Reward %s was taken", TAG, reward->getName()->getCString());
 }

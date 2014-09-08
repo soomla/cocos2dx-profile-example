@@ -1887,7 +1887,7 @@
 					"$(SRCROOT)/../../../extensions/cocos2dx-store/build/ios/headers/**",
 					"\"$(SRCROOT)/../../../extensions/CocoStudio/GUI\"",
 					"\"$(SRCROOT)/../../../extensions/GUI\"",
-					"$(SRCROOT)/../../../extensions/cocos2dx-profile/Profile/**",
+					"$(SRCROOT)/../../../extensions/cocos2dx-profile/Soomla/**",
 					"$(SRCROOT)/../../../extensions/cocos2dx-profile/build/ios/headers/**",
 				);
 				INFOPLIST_FILE = Info.plist;
@@ -1940,7 +1940,7 @@
 					"$(SRCROOT)/../../../extensions/cocos2dx-store/build/ios/headers/**",
 					"\"$(SRCROOT)/../../../extensions/CocoStudio/GUI\"",
 					"\"$(SRCROOT)/../../../extensions/GUI\"",
-					"$(SRCROOT)/../../../extensions/cocos2dx-profile/Profile/**",
+					"$(SRCROOT)/../../../extensions/cocos2dx-profile/Soomla/**",
 					"$(SRCROOT)/../../../extensions/cocos2dx-profile/build/ios/headers/**",
 				);
 				INFOPLIST_FILE = Info.plist;

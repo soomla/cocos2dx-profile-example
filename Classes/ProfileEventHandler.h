@@ -28,6 +28,8 @@
 class ProfileEventHandler: public soomla::CCProfileEventHandler {
 
 public:
+    virtual void onProfileInitialized();
+    
     virtual void onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription);
     virtual void onLoginFinished(soomla::CCUserProfile *userProfile);
     virtual void onLoginStarted(soomla::CCProvider provider);

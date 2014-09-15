@@ -24,6 +24,10 @@
 
 USING_NS_CC;
 
+void ProfileEventHandler::onProfileInitialized() {
+    log("%s Profile has initialized", TAG);
+}
+
 void ProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription) {
     log("%s Login to %s has failed: %s", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(), errorDescription->getCString());
 }

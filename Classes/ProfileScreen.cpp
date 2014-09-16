@@ -167,7 +167,7 @@ bool ProfileScreen::init() {
                                                                   soomla::CCProfileConsts::EVENT_LOGOUT_FINISHED, NULL);
     
     soomla::CCError *profileError = NULL;
-    bool isLoggedIn =  soomla::CCProfileController::getInstance()->isLoggedIn(soomla::FACEBOOK, &profileError);
+    bool isLoggedIn =  soomla::CCSoomlaProfile::getInstance()->isLoggedIn(soomla::FACEBOOK, &profileError);
     if (profileError) {
         CCMessageBox(profileError->getInfo(), "Error");
     }
@@ -193,9 +193,9 @@ void ProfileScreen::onLoginFinished(CCObject* obj) {
     this->setLoggedInState();
     
     soomla::CCError *profileError = NULL;
-    soomla::CCProfileController::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
-    soomla::CCProfileController::getInstance()->getFeed(soomla::FACEBOOK, NULL, &profileError);
-    soomla::CCProfileController::getInstance()->getContacts(soomla::FACEBOOK, NULL, &profileError);
+    soomla::CCSoomlaProfile::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
+    soomla::CCSoomlaProfile::getInstance()->getFeed(soomla::FACEBOOK, NULL, &profileError);
+    soomla::CCSoomlaProfile::getInstance()->getContacts(soomla::FACEBOOK, NULL, &profileError);
 }
 
 void ProfileScreen::onLogoutFinished(CCObject* obj) {
@@ -225,16 +225,16 @@ void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) 
         Widget *sender = static_cast<Widget *>(ref);
         soomla::CCError *profileError = NULL;
         if (sender->getActionTag() == LOGIN_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
+            soomla::CCSoomlaProfile::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
             
             // TEST open rating page
-            // soomla::CCProfileController::getInstance()->openAppRatingPage(&profileError);
+            // soomla::CCSoomlaProfile::getInstance()->openAppRatingPage(&profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", shareReward, &profileError);
+            soomla::CCSoomlaProfile::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", shareReward, &profileError);
         }
         else if (sender->getActionTag() == STORY_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->updateStory(soomla::FACEBOOK,
+            soomla::CCSoomlaProfile::getInstance()->updateStory(soomla::FACEBOOK,
                                                                     "This is the story of a very strong and brave SOOMBOT on his jurney from SOOMBOTIA to a far away galaxy. That galaxy contains a blue planet where all human game developers love to eat food spiced with marshmallow.",
                                                                     "The story of SOOMBOT (Profile Test App)",
                                                                     "SOOMBOT Story",
@@ -250,7 +250,7 @@ void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) 
             this->scheduleOnce(schedule_selector(ProfileScreen::screenshotSavedCallback), 1.0f);
         }
         else if (sender->getActionTag() == LOGOUT_BUTTON_TAG) {
-            soomla::CCProfileController::getInstance()->logout(soomla::FACEBOOK, &profileError);
+            soomla::CCSoomlaProfile::getInstance()->logout(soomla::FACEBOOK, &profileError);
         }
         else {
             return;
@@ -263,7 +263,7 @@ void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) 
 
 void ProfileScreen::screenshotSavedCallback(float dt) {
     soomla::CCError *profileError = NULL;
-    soomla::CCProfileController::getInstance()->uploadImage(soomla::FACEBOOK,
+    soomla::CCSoomlaProfile::getInstance()->uploadImage(soomla::FACEBOOK,
                                                             "I love SOOMLA! http://www.soom.la",
                                                             screenshotPath.c_str(),
                                                             uploadReward,

@@ -24,6 +24,14 @@
 
 USING_NS_CC;
 
+void ProfileEventHandler::onProfileInitialized() {
+    CCLOG("%s Profile module has initialized", TAG);
+}
+
+void ProfileEventHandler::onUserRatingEvent() {
+    CCLOG("%s Market rating page has opened", TAG);
+}
+
 void ProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription) {
     CCLOG("%s Login to %s has failed: %s", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(), errorDescription->getCString());
 }

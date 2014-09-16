@@ -90,8 +90,8 @@ bool ProfileScreen::init() {
     background->setPosition(CCPoint(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
     layout->addChild(background);
     
-    float scaleX = visibleSize.width / background->getSize().width;
-    float scaleY = visibleSize.height / background->getSize().height;
+    float scaleX = visibleSize.width / background->getContentSize().width;
+    float scaleY = visibleSize.height / background->getContentSize().height;
     
     background->setScale(scaleX, scaleY);
     
@@ -101,7 +101,7 @@ bool ProfileScreen::init() {
     header->setScale(scaleX, scaleY);
     header->setPosition(CCPoint(0.0f, vShift));
     layout->addChild(header);
-    vShift -= header->getSize().height * scaleY;
+    vShift -= header->getContentSize().height * scaleY;
     
     vShift -= relativeY(70.0f, visibleSize.height);
     
@@ -110,7 +110,7 @@ bool ProfileScreen::init() {
                                 vShift, STATUS_BUTTON_TAG, scaleX, scaleY, visibleSize);
     shareButton->retain();
     
-    vShift -= shareButton->getSize().height * scaleY;
+    vShift -= shareButton->getContentSize().height * scaleY;
     vShift -= relativeY(60.0f, visibleSize.height);
     
     storyButton = createActionButton(layout,
@@ -118,7 +118,7 @@ bool ProfileScreen::init() {
                                 vShift, STORY_BUTTON_TAG, scaleX, scaleY, visibleSize);
     storyButton->retain();
     
-    vShift -= storyButton->getSize().height * scaleY;
+    vShift -= storyButton->getContentSize().height * scaleY;
     vShift -= relativeY(60.0f, visibleSize.height);
     
     uploadButton = createActionButton(layout,
@@ -126,7 +126,7 @@ bool ProfileScreen::init() {
                                 vShift, UPLOAD_BUTTON_TAG, scaleX, scaleY, visibleSize);
     uploadButton->retain();
     
-    vShift -= uploadButton->getSize().height * scaleY;
+    vShift -= uploadButton->getContentSize().height * scaleY;
     vShift -= relativeY(150.0f, visibleSize.height);
     
     loginButton = ui::Button::create();
@@ -226,6 +226,9 @@ void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) 
         soomla::CCError *profileError = NULL;
         if (sender->getActionTag() == LOGIN_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
+            
+            // TEST open rating page
+            soomla::CCProfileController::getInstance()->openAppRatingPage(&profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", shareReward, &profileError);

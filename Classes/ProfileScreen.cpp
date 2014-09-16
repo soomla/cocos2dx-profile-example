@@ -228,7 +228,7 @@ void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) 
             soomla::CCProfileController::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
             
             // TEST open rating page
-            soomla::CCProfileController::getInstance()->openAppRatingPage(&profileError);
+            // soomla::CCProfileController::getInstance()->openAppRatingPage(&profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
             soomla::CCProfileController::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", shareReward, &profileError);

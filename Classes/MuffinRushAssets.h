@@ -37,6 +37,13 @@
 #define CHOCLATECAKE_ITEM_ID "chocolate_cake"
 #define CREAMCUP_ITEM_ID "cream_cup"
 
+/**
+ 
+ Muffin Rush implementation of `IStoreAssets`, which defines our game's
+ economy, including virtual goods, virtual currencies, and currency packs.
+ 
+ For the functions below, see the documentation in the parent class.
+ */
 class MuffinRushAssets: public soomla::CCStoreAssets {
     cocos2d::__Array *mCurrencies;
     cocos2d::__Array *mGoods;

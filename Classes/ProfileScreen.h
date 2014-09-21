@@ -27,6 +27,10 @@
 #include "CCReward.h"
 #include "MuffinRushAssets.h"
 
+/**
+ This class is a screen of the Muffin Rush example, that contains buttons
+ that supply social actions.
+ */
 class ProfileScreen : public cocos2d::Layer {
 public:
     static cocos2d::Scene* createScene();

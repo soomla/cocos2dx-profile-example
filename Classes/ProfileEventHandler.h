@@ -24,7 +24,12 @@
 #ifndef __ProfileEventHandler_H_
 #define __ProfileEventHandler_H_
 
-
+/**
+ This class contains functions that handle various events that are triggered
+ throughout the Profile code.
+ 
+ For the functions below, see the documentation in the parent class.
+ */
 class ProfileEventHandler: public soomla::CCProfileEventHandler {
 
 public:

@@ -59,22 +59,22 @@ bool ProfileScreen::init() {
     
     loginReward = soomla::CCVirtualItemReward::create(__String::create("login_reward"),
                                                       __String::create("Login Reward"),
-                                                      __Bool::create(false), __Integer::create(100), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                      __Integer::create(100), __String::create(MUFFIN_CURRENCY_ITEM_ID));
     loginReward->retain();
     
     shareReward = soomla::CCVirtualItemReward::create(__String::create("share_reward"),
                                                       __String::create("Share Reward"),
-                                                      __Bool::create(false), __Integer::create(150), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                      __Integer::create(150), __String::create(MUFFIN_CURRENCY_ITEM_ID));
     shareReward->retain();
     
     uploadReward = soomla::CCVirtualItemReward::create(__String::create("upload_reward"),
                                                       __String::create("Upload Reward"),
-                                                      __Bool::create(false), __Integer::create(200), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                      __Integer::create(200), __String::create(MUFFIN_CURRENCY_ITEM_ID));
     uploadReward->retain();
     
     likePageReward = soomla::CCVirtualItemReward::create(__String::create("like_page_reward"),
                                                        __String::create("Like Page Reward"),
-                                                       __Bool::create(false), __Integer::create(300), __String::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                       __Integer::create(300), __String::create(MUFFIN_CURRENCY_ITEM_ID));
     likePageReward->retain();
 
     Size visibleSize = Director::getInstance()->getVisibleSize();

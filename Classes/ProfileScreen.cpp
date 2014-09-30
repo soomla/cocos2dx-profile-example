@@ -61,22 +61,22 @@ bool ProfileScreen::init() {
     
     loginReward = soomla::CCVirtualItemReward::create(CCString::create("login_reward"),
                                                       CCString::create("Login Reward"),
-                                                      CCBool::create(false), CCInteger::create(100), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                      CCInteger::create(100), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     loginReward->retain();
     
     shareReward = soomla::CCVirtualItemReward::create(CCString::create("share_reward"),
                                                       CCString::create("Share Reward"),
-                                                      CCBool::create(false), CCInteger::create(150), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                      CCInteger::create(150), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     shareReward->retain();
     
     uploadReward = soomla::CCVirtualItemReward::create(CCString::create("upload_reward"),
                                                       CCString::create("Upload Reward"),
-                                                      CCBool::create(false), CCInteger::create(200), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                      CCInteger::create(200), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     uploadReward->retain();
     
     likePageReward = soomla::CCVirtualItemReward::create(CCString::create("like_page_reward"),
                                                        CCString::create("Like Page Reward"),
-                                                       CCBool::create(false), CCInteger::create(300), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
+                                                       CCInteger::create(300), CCString::create(MUFFIN_CURRENCY_ITEM_ID));
     likePageReward->retain();
 
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();

@@ -1891,7 +1891,7 @@
 					"$(SRCROOT)/../../../extensions/cocos2dx-profile/build/ios/headers/**",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Cocos2dxProfileExample;
@@ -1944,7 +1944,7 @@
 					"$(SRCROOT)/../../../extensions/cocos2dx-profile/build/ios/headers/**",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Cocos2dxProfileExample;

@@ -193,8 +193,10 @@ void ProfileScreen::onLoginFinished(CCObject* obj) {
     this->setLoggedInState();
     
     soomla::CCError *profileError = NULL;
-    soomla::CCSoomlaProfile::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
-    soomla::CCSoomlaProfile::getInstance()->getFeed(soomla::FACEBOOK, NULL, &profileError);
+    // These are here for testing purposes only, they should not be called
+    // one after the other, but one at the time
+    //soomla::CCSoomlaProfile::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
+    //soomla::CCSoomlaProfile::getInstance()->getFeed(soomla::FACEBOOK, NULL, &profileError);
     soomla::CCSoomlaProfile::getInstance()->getContacts(soomla::FACEBOOK, NULL, &profileError);
 }
 

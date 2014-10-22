@@ -3,6 +3,8 @@
 //  Copyright VedideV 2013. All rights reserved.
 //
 
+#import <FacebookSDK/FacebookSDK.h>
+
 #import "AppController.h"
 #import "EAGLView.h"
 #import "cocos2d.h"
@@ -105,6 +107,21 @@ static AppDelegate s_sharedApplication;
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+}
+
+// During the Facebook login flow, your app passes control to the Facebook iOS app or Facebook in a mobile browser.
+// After authentication, your app will be called back with the session information.
+// Override application:openURL:sourceApplication:annotation to call the FBsession object that handles the incoming URL
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    
+    
+    BOOL urlWasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    return urlWasHandled;
 }
 
 

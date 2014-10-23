@@ -234,6 +234,9 @@ void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) 
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
             soomla::CCSoomlaProfile::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", shareReward, &profileError);
+            
+            // or with dialog
+            //soomla::CCSoomlaProfile::getInstance()->updateStatusDialog(soomla::FACEBOOK, "http://www.soom.la", shareReward, &profileError);
         }
         else if (sender->getActionTag() == STORY_BUTTON_TAG) {
             soomla::CCSoomlaProfile::getInstance()->updateStory(soomla::FACEBOOK,
@@ -245,6 +248,16 @@ void ProfileScreen::onClicked(cocos2d::CCObject *ref, TouchEventType touchType) 
                                                                     "http://about.soom.la/wp-content/uploads/2014/05/330x268-spockbot.png",
                                                                     NULL,
                                                                     &profileError);
+            
+            // or with dialog
+            //soomla::CCSoomlaProfile::getInstance()->updateStoryDialog(soomla::FACEBOOK,
+            //                                                    "The story of SOOMBOT (Profile Test App)",
+            //                                                    "SOOMBOT Story",
+            //                                                    "DESCRIPTION",
+            //                                                    "http://about.soom.la/soombots",
+            //                                                    "http://about.soom.la/wp-content/uploads/2014/05/330x268-spockbot.png",
+            //                                                    shareReward,
+            //                                                    &profileError);
         }
         else if (sender->getActionTag() == UPLOAD_BUTTON_TAG) {
             screenshotPath = saveScreenshot();

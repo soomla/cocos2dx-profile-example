@@ -229,7 +229,10 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
             // soomla::CCSoomlaProfile::getInstance()->openAppRatingPage(&profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
-            soomla::CCSoomlaProfile::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! http://www.soom.la", shareReward, &profileError);
+            soomla::CCSoomlaProfile::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! ", shareReward, &profileError);
+            
+            // Or with dialog
+            //soomla::CCSoomlaProfile::getInstance()->updateStatusDialog(soomla::FACEBOOK,"http://www.soom.la", shareReward, &profileError);
         }
         else if (sender->getActionTag() == STORY_BUTTON_TAG) {
             soomla::CCSoomlaProfile::getInstance()->updateStory(soomla::FACEBOOK,
@@ -241,6 +244,16 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
                                                                     "http://about.soom.la/wp-content/uploads/2014/05/330x268-spockbot.png",
                                                                     nullptr,
                                                                     &profileError);
+            
+            // Or with dialog
+            //soomla::CCSoomlaProfile::getInstance()->updateStoryDialog(soomla::FACEBOOK,
+            //                                                    "The story of SOOMBOT (Profile Test App)",
+            //                                                    "SOOMBOT Story",
+            //                                                    "DESCRIPTION",
+            //                                                    "http://about.soom.la/soombots",
+            //                                                    "http://about.soom.la/wp-content/uploads/2014/05/330x268-spockbot.png",
+            //                                                    shareReward,
+            //                                                   &profileError);
         }
         else if (sender->getActionTag() == UPLOAD_BUTTON_TAG) {
             screenshotPath = saveScreenshot();

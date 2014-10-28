@@ -192,6 +192,7 @@
 		D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949B15BD2D8E00D803EB /* Icon-114.png */; };
 		D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949D15BD2D9600D803EB /* Icon-72.png */; };
 		D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF949F15BD2D9800D803EB /* Icon-144.png */; };
+		F874880B1A0005F8005952C9 /* libSoomlaiOSProfileFacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F874880A1A0005F8005952C9 /* libSoomlaiOSProfileFacebook.a */; };
 		F8A08DBB19BBA0720016EA7F /* CoreEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A08DB519BBA0720016EA7F /* CoreEventHandler.cpp */; };
 		F8A08DBC19BBA0720016EA7F /* ProfileEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A08DB719BBA0720016EA7F /* ProfileEventHandler.cpp */; };
 		F8A08DBD19BBA0720016EA7F /* ProfileScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A08DB919BBA0720016EA7F /* ProfileScreen.cpp */; };
@@ -216,6 +217,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1551A33E158F2AB200E66CFE;
 			remoteInfo = cocos2dx;
+		};
+		F85EFA6A1A0004F2006092AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8A08DBE19BBA08D0016EA7F /* Cocos2dXCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D52642419DBDF3700BDA0F5;
+			remoteInfo = Cocos2dXCoreWithJsb;
+		};
+		F85EFA6D1A0004F2006092AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8A08DC419BBA0970016EA7F /* Cocos2dXStore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9D52648219DBE06100BDA0F5;
+			remoteInfo = Cocos2dXStoreWithJsb;
 		};
 		F8A08DC219BBA08D0016EA7F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -631,6 +646,7 @@
 		D4EF949D15BD2D9600D803EB /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../proj.ios_mac/Icon-72.png"; sourceTree = "<group>"; };
 		D4EF949F15BD2D9800D803EB /* Icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-144.png"; path = "../proj.ios_mac/Icon-144.png"; sourceTree = "<group>"; };
 		D4F9F37B12E54555005CA6D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		F874880A1A0005F8005952C9 /* libSoomlaiOSProfileFacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoomlaiOSProfileFacebook.a; path = "../../../extensions/cocos2dx-profile/build/ios/libSoomlaiOSProfileFacebook.a"; sourceTree = "<group>"; };
 		F8A08DB519BBA0720016EA7F /* CoreEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CoreEventHandler.cpp; path = ../Classes/CoreEventHandler.cpp; sourceTree = "<group>"; };
 		F8A08DB619BBA0720016EA7F /* CoreEventHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreEventHandler.h; path = ../Classes/CoreEventHandler.h; sourceTree = "<group>"; };
 		F8A08DB719BBA0720016EA7F /* ProfileEventHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ProfileEventHandler.cpp; path = ../Classes/ProfileEventHandler.cpp; sourceTree = "<group>"; };
@@ -660,6 +676,7 @@
 				9DE21A961753902100D21B65 /* Security.framework in Frameworks */,
 				9DE21A991753903300D21B65 /* StoreKit.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				F874880B1A0005F8005952C9 /* libSoomlaiOSProfileFacebook.a in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
@@ -854,6 +871,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F874880A1A0005F8005952C9 /* libSoomlaiOSProfileFacebook.a */,
 				F8A08DF519BBA2E70016EA7F /* FacebookSDK.framework */,
 				C05F2F0B187AB971007C7025 /* AdSupport.framework */,
 				9DE21A971753902900D21B65 /* StoreKit.framework */,
@@ -1511,6 +1529,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A08DC319BBA08D0016EA7F /* libCocos2dXCore.a */,
+				F85EFA6B1A0004F2006092AB /* libCocos2dXCoreWithJsb.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1519,6 +1538,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A08DC919BBA0970016EA7F /* libCocos2dXStore.a */,
+				F85EFA6E1A0004F2006092AB /* libCocos2dXStoreWithJsb.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1607,6 +1627,20 @@
 			fileType = archive.ar;
 			path = libcocos2dx.a;
 			remoteRef = 15A3D8851682F7B3002FB0C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F85EFA6B1A0004F2006092AB /* libCocos2dXCoreWithJsb.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocos2dXCoreWithJsb.a;
+			remoteRef = F85EFA6A1A0004F2006092AB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F85EFA6E1A0004F2006092AB /* libCocos2dXStoreWithJsb.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCocos2dXStoreWithJsb.a;
+			remoteRef = F85EFA6D1A0004F2006092AB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		F8A08DC319BBA08D0016EA7F /* libCocos2dXCore.a */ = {
@@ -1892,7 +1926,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/simong/source/cocos2d-x-2.2.5/extensions/cocos2dx-profile/build/ios",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Cocos2dxProfileExample;
 				PROVISIONING_PROFILE = "";
@@ -1945,7 +1982,10 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
+					"/Users/simong/source/cocos2d-x-2.2.5/extensions/cocos2dx-profile/build/ios",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Cocos2dxProfileExample;
 				PROVISIONING_PROFILE = "";

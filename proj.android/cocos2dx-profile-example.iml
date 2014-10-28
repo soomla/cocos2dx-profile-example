@@ -98,6 +98,15 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="facebook" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../cocos2d/extensions/cocos2dx-profile/build/android/AndroidProfileFacebook.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
 

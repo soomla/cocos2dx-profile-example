@@ -87,7 +87,7 @@
 		F83CA3B119B355D4001BFFA6 /* libCocos2dXStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A0EC5B19AC8D6F006CB3C2 /* libCocos2dXStore.a */; };
 		F83CA3B219B355DA001BFFA6 /* libCocos2dXCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D41017A1978D51900907FA8 /* libCocos2dXCore.a */; };
 		F843AAAF19AA0E3C0023AFF6 /* profile in Resources */ = {isa = PBXBuildFile; fileRef = F843AAAE19AA0E3C0023AFF6 /* profile */; };
-		F8A08DE619BBA2920016EA7F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A08DE519BBA2920016EA7F /* FacebookSDK.framework */; };
+		F85EFA5E19FFFD67006092AB /* libSoomlaiOSProfileFacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F85EFA5419FFF30D006092AB /* libSoomlaiOSProfileFacebook.a */; };
 		F8A0EC6419AC8E65006CB3C2 /* MuffinRushAssets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A0EC6219AC8E65006CB3C2 /* MuffinRushAssets.cpp */; };
 		F8A0EC9119ACCD46006CB3C2 /* CoreEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A0EC9019ACCD46006CB3C2 /* CoreEventHandler.cpp */; };
 		F8DA3BC919B70BBB00438250 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DA3BC819B70BBB00438250 /* GameController.framework */; };
@@ -360,6 +360,7 @@
 		F82107C119A785C3008DB661 /* libSoomlaiOSProfileFacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoomlaiOSProfileFacebook.a; path = "../../../extensions/cocos2dx-profile/submodules/ios-profile/social-providers/soomla-facebook/libSoomlaiOSProfileFacebook.a"; sourceTree = "<group>"; };
 		F82107C519A78793008DB661 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/FacebookSDK.framework; sourceTree = "<group>"; };
 		F843AAAE19AA0E3C0023AFF6 /* profile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = profile; sourceTree = "<group>"; };
+		F85EFA5419FFF30D006092AB /* libSoomlaiOSProfileFacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSoomlaiOSProfileFacebook.a; path = "../../../extensions/cocos2dx-profile/build/ios/libSoomlaiOSProfileFacebook.a"; sourceTree = "<group>"; };
 		F8A08DE519BBA2920016EA7F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/FacebookSDK.framework; sourceTree = "<group>"; };
 		F8A0EC5419AC8D6F006CB3C2 /* Cocos2dXStore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Cocos2dXStore.xcodeproj; path = "../../../extensions/cocos2dx-store/Cocos2dXStore.xcodeproj"; sourceTree = "<group>"; };
 		F8A0EC6219AC8E65006CB3C2 /* MuffinRushAssets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MuffinRushAssets.cpp; sourceTree = "<group>"; };
@@ -374,6 +375,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82107C619A78793008DB661 /* FacebookSDK.framework in Frameworks */,
+				F85EFA5E19FFFD67006092AB /* libSoomlaiOSProfileFacebook.a in Frameworks */,
 				F8DA3BC919B70BBB00438250 /* GameController.framework in Frameworks */,
 				F83CA3B019B355CF001BFFA6 /* libCocos2dXProfile.a in Frameworks */,
 				F83CA3B119B355D4001BFFA6 /* libCocos2dXStore.a in Frameworks */,
@@ -387,7 +390,6 @@
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				F82107C619A78793008DB661 /* FacebookSDK.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
@@ -395,7 +397,6 @@
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
 				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
 				D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */,
-				F8A08DE619BBA2920016EA7F /* FacebookSDK.framework in Frameworks */,
 				372B72F3BE64A71A3F37F32C /* Security.framework in Frameworks */,
 				372B76E33707970547964623 /* libsqlite3.0.dylib in Frameworks */,
 				372B7355F98824BE43984F27 /* StoreKit.framework in Frameworks */,
@@ -508,6 +509,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F85EFA5419FFF30D006092AB /* libSoomlaiOSProfileFacebook.a */,
 				F8A08DE519BBA2920016EA7F /* FacebookSDK.framework */,
 				F8DA3BC819B70BBB00438250 /* GameController.framework */,
 				F82107C519A78793008DB661 /* FacebookSDK.framework */,
@@ -1021,7 +1023,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Cocos2dxProfileExample iOS";
 				PROVISIONING_PROFILE = "";
@@ -1065,7 +1067,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Cocos2dxProfileExample iOS";
 				PROVISIONING_PROFILE = "";

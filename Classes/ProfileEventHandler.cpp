@@ -32,25 +32,25 @@ void ProfileEventHandler::onUserRatingEvent() {
     CCLOG("%s Market rating page has opened", TAG);
 }
 
-void ProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
+void ProfileEventHandler::onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
     CCLOG("%s Login to %s has failed: %s (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(), errorDescription->getCString(),
         payload->getCString());
 }
 
-void ProfileEventHandler::onLoginFinished(soomla::CCUserProfile *userProfile, cocos2d::__String *payload) {
-    log("%s %s (%s)", TAG, "onLoginFinished", payload->getCString());
+void ProfileEventHandler::onLoginFinished(soomla::CCUserProfile *userProfile, cocos2d::CCString *payload) {
+    CCLOG("%s %s (%s)", TAG, "onLoginFinished", payload->getCString());
     
     CCNotificationCenter::sharedNotificationCenter()->postNotification(soomla::CCProfileConsts::EVENT_LOGIN_FINISHED,
                                                                        userProfile);
 }
 
-void ProfileEventHandler::onLoginStarted(soomla::CCProvider provider, cocos2d::__String *payload) {
-    log("%s Login to %s has started (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onLoginStarted(soomla::CCProvider provider, cocos2d::CCString *payload) {
+    CCLOG("%s Login to %s has started (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         payload->getCString());
 }
 
-void ProfileEventHandler::onLoginCancelledEvent(soomla::CCProvider provider, cocos2d::__String *payload) {
-    log("%s Login to %s has cancelled (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onLoginCancelledEvent(soomla::CCProvider provider, cocos2d::CCString *payload) {
+    CCLOG("%s Login to %s has cancelled (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         payload->getCString());
 }
 
@@ -68,13 +68,13 @@ void ProfileEventHandler::onLogoutStarted(soomla::CCProvider provider) {
     CCLOG("%s Logout from %s has started", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString());
 }
 
-void ProfileEventHandler::onGetContactsFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
-    log("%s Get contacts from %s has FAILED: %s (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onGetContactsFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
+    CCLOG("%s Get contacts from %s has FAILED: %s (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         errorDescription->getCString(), payload->getCString());
 }
 
-void ProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, cocos2d::__Array *contactsDict, cocos2d::__String *payload) {
-    log("%s Get contacts from %s has finished (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, cocos2d::CCArray *contactsDict, cocos2d::CCString *payload) {
+    CCLOG("%s Get contacts from %s has finished (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         payload->getCString());
     
     for (int i = 0; i < contactsDict->count(); ++i){
@@ -84,18 +84,18 @@ void ProfileEventHandler::onGetContactsFinished(soomla::CCProvider provider, coc
     }
 }
 
-void ProfileEventHandler::onGetContactsStarted(soomla::CCProvider provider, cocos2d::__String *payload) {
-    log("%s Get contacts from %s has started (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onGetContactsStarted(soomla::CCProvider provider, cocos2d::CCString *payload) {
+    CCLOG("%s Get contacts from %s has started (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         payload->getCString());
 }
 
-void ProfileEventHandler::onGetFeedFailed(soomla::CCProvider provider, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
-    log("%s Get feed from %s has FAILED: %s (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onGetFeedFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
+    CCLOG("%s Get feed from %s has FAILED: %s (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
          errorDescription->getCString(), payload->getCString());
 }
 
-void ProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d::__Array *feedList, cocos2d::__String *payload) {
-    log("%s Get feed from %s has finished (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d::CCArray *feedList, cocos2d::CCString *payload) {
+    CCLOG("%s Get feed from %s has finished (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         payload->getCString());
     
     for (int i = 0; i < feedList->count(); ++i){
@@ -103,24 +103,24 @@ void ProfileEventHandler::onGetFeedFinished(soomla::CCProvider provider, cocos2d
     }
 }
 
-void ProfileEventHandler::onGetFeedStarted(soomla::CCProvider provider, cocos2d::__String *payload) {
-    log("%s Get feed from %s has started (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
+void ProfileEventHandler::onGetFeedStarted(soomla::CCProvider provider, cocos2d::CCString *payload) {
+    CCLOG("%s Get feed from %s has started (%s)", TAG, soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         payload->getCString());
 }
 
-void ProfileEventHandler::onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::__String *errorDescription, cocos2d::__String *payload) {
-    log("%s Social action %s on %s has FAILED: %s (%s)", TAG, soomla::CCSocialActionUtils::actionEnumToString(socialActionType)->getCString(),
+void ProfileEventHandler::onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *errorDescription, cocos2d::CCString *payload) {
+    CCLOG("%s Social action %s on %s has FAILED: %s (%s)", TAG, soomla::CCSocialActionUtils::actionEnumToString(socialActionType)->getCString(),
         soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(),
         errorDescription->getCString(), payload->getCString());
 }
 
-void ProfileEventHandler::onSocialActionFinishedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::__String *payload) {
-    log("%s Social action %s on %s has finished (%s)", TAG, soomla::CCSocialActionUtils::actionEnumToString(socialActionType)->getCString(),
+void ProfileEventHandler::onSocialActionFinishedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *payload) {
+    CCLOG("%s Social action %s on %s has finished (%s)", TAG, soomla::CCSocialActionUtils::actionEnumToString(socialActionType)->getCString(),
         soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(), payload->getCString());
 }
 
-void ProfileEventHandler::onSocialActionStartedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::__String *payload) {
-    log("%s Social action %s on %s has started (%s)", TAG, soomla::CCSocialActionUtils::actionEnumToString(socialActionType)->getCString(),
+void ProfileEventHandler::onSocialActionStartedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *payload) {
+    CCLOG("%s Social action %s on %s has started (%s)", TAG, soomla::CCSocialActionUtils::actionEnumToString(socialActionType)->getCString(),
         soomla::CCUserProfileUtils::providerEnumToString(provider)->getCString(), payload->getCString());
 }
 

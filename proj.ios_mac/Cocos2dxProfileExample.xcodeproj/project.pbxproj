@@ -83,6 +83,9 @@
 		F821042819A7759A008DB661 /* ProfileEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F821042619A7759A008DB661 /* ProfileEventHandler.cpp */; };
 		F821042B19A775DF008DB661 /* ProfileScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F821042919A775DF008DB661 /* ProfileScreen.cpp */; };
 		F82107C619A78793008DB661 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82107C519A78793008DB661 /* FacebookSDK.framework */; };
+		F82F0C001A1370A600D1B34A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0BFF1A1370A600D1B34A /* Twitter.framework */; };
+		F82F0C021A1370AB00D1B34A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C011A1370AB00D1B34A /* Social.framework */; };
+		F82F0C041A1370C100D1B34A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F0C031A1370C100D1B34A /* Accounts.framework */; };
 		F83CA3B019B355CF001BFFA6 /* libCocos2dXProfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F821041D19A7720C008DB661 /* libCocos2dXProfile.a */; };
 		F83CA3B119B355D4001BFFA6 /* libCocos2dXStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A0EC5B19AC8D6F006CB3C2 /* libCocos2dXStore.a */; };
 		F83CA3B219B355DA001BFFA6 /* libCocos2dXCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D41017A1978D51900907FA8 /* libCocos2dXCore.a */; };
@@ -97,7 +100,6 @@
 		F85275341A12088100869516 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85275311A12088100869516 /* GoogleOpenSource.framework */; };
 		F85275351A12088100869516 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F85275321A12088100869516 /* GooglePlus.bundle */; };
 		F85275361A12088100869516 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F85275331A12088100869516 /* GooglePlus.framework */; };
-		F85275371A12089000869516 /* GooglePlus.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = F85275321A12088100869516 /* GooglePlus.bundle */; };
 		F8A0EC6419AC8E65006CB3C2 /* MuffinRushAssets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A0EC6219AC8E65006CB3C2 /* MuffinRushAssets.cpp */; };
 		F8A0EC9119ACCD46006CB3C2 /* CoreEventHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8A0EC9019ACCD46006CB3C2 /* CoreEventHandler.cpp */; };
 		F8DA3BC919B70BBB00438250 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8DA3BC819B70BBB00438250 /* GameController.framework */; };
@@ -368,6 +370,9 @@
 		F821042919A775DF008DB661 /* ProfileScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProfileScreen.cpp; sourceTree = "<group>"; };
 		F821042A19A775DF008DB661 /* ProfileScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileScreen.h; sourceTree = "<group>"; };
 		F82107C519A78793008DB661 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/FacebookSDK.framework; sourceTree = "<group>"; };
+		F82F0BFF1A1370A600D1B34A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Twitter.framework; sourceTree = DEVELOPER_DIR; };
+		F82F0C011A1370AB00D1B34A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Social.framework; sourceTree = DEVELOPER_DIR; };
+		F82F0C031A1370C100D1B34A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
 		F843AAAE19AA0E3C0023AFF6 /* profile */ = {isa = PBXFileReference; lastKnownFileType = folder; path = profile; sourceTree = "<group>"; };
 		F85275211A1206EC00869516 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/AddressBook.framework; sourceTree = DEVELOPER_DIR; };
 		F85275231A1206F400869516 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
@@ -396,8 +401,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82F0C041A1370C100D1B34A /* Accounts.framework in Frameworks */,
+				F82F0C021A1370AB00D1B34A /* Social.framework in Frameworks */,
+				F82F0C001A1370A600D1B34A /* Twitter.framework in Frameworks */,
 				F85275341A12088100869516 /* GoogleOpenSource.framework in Frameworks */,
-				F85275371A12089000869516 /* GooglePlus.bundle in Frameworks */,
 				F85275361A12088100869516 /* GooglePlus.framework in Frameworks */,
 				F852752E1A12074100869516 /* SystemConfiguration.framework in Frameworks */,
 				F852752C1A12071A00869516 /* CoreText.framework in Frameworks */,
@@ -539,6 +546,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F82F0C031A1370C100D1B34A /* Accounts.framework */,
+				F82F0C011A1370AB00D1B34A /* Social.framework */,
+				F82F0BFF1A1370A600D1B34A /* Twitter.framework */,
 				F85275311A12088100869516 /* GoogleOpenSource.framework */,
 				F85275321A12088100869516 /* GooglePlus.bundle */,
 				F85275331A12088100869516 /* GooglePlus.framework */,

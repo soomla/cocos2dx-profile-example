@@ -3,8 +3,6 @@
 //  Copyright VedideV 2013. All rights reserved.
 //
 
-#import <FacebookSDK/FacebookSDK.h>
-
 #import "AppController.h"
 #import "EAGLView.h"
 #import "cocos2d.h"
@@ -13,6 +11,7 @@
 #import "ServiceManager.h"
 #import "StoreService.h"
 #import "ProfileService.h"
+#import "SoomlaProfile.h"
 
 @implementation AppController
 
@@ -117,9 +116,7 @@ static AppDelegate s_sharedApplication;
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    
-    
-    BOOL urlWasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    BOOL urlWasHandled = [[SoomlaProfile getInstance] tryHandleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
     
     return urlWasHandled;
 }

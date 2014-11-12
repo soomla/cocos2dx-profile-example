@@ -2,7 +2,9 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android" name="Android">
-      <configuration />
+      <configuration>
+        <option name="CUSTOM_DEBUG_KEYSTORE_PATH" value="file://$MODULE_DIR$/keystore/debug.jks" />
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
@@ -102,6 +104,43 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../cocos2d/extensions/cocos2dx-profile/build/android/AndroidProfileFacebook.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module" module-name="google-play-services_lib" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../extensions/cocos2dx-profile/build/android/AndroidProfileGoogle.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../extensions/cocos2dx-profile/build/android/AndroidProfileTwitter.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../extensions/cocos2dx-profile/build/android/twitter4j-asyc-4.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../extensions/cocos2dx-profile/build/android/twitter4j-core-4.0.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

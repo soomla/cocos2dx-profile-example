@@ -67,6 +67,7 @@ private:
     soomla::CCReward *uploadReward;
     soomla::CCReward *likePageReward;
     std::string screenshotPath;
+    soomla::CCProvider targetProvider;
 
     float relativeX(float designX, float screenWidth);
     float relativeY(float designY, float screenHeight);

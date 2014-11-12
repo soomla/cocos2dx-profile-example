@@ -14,6 +14,7 @@
  */
 package org.cocos2dx.cpp;
 
+import com.soomla.SoomlaConfig;
 import com.soomla.cocos2dx.common.ServiceManager;
 import com.soomla.cocos2dx.profile.ProfileService;
 import com.soomla.cocos2dx.store.StoreService;
@@ -23,6 +24,9 @@ import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 public class AppActivity extends Cocos2dxActivity {
     @Override
     public Cocos2dxGLSurfaceView onCreateView() {
+
+        SoomlaConfig.logDebug = true;
+
         Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);
 
         glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);

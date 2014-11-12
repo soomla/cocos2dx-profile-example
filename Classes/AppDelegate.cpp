@@ -24,6 +24,7 @@
 #include "CCServiceManager.h"
 #include "CCStoreService.h"
 #include "CCCoreEventDispatcher.h"
+#include "CCUserProfileUtils.h"
 
 USING_NS_CC;
 
@@ -53,6 +54,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     soomla::CCStoreService::initShared(assets, storeParams);
     
     __Dictionary *profileParams = __Dictionary::create();
+    __Dictionary *twitterParams = __Dictionary::create();
+    twitterParams->setObject(__String::create("T8NMGwKq6USYCjZox86Bxd2RJ"), "consumerKey");
+    twitterParams->setObject(__String::create("TO88J9QjIJlSGfuyfza9Ox2OgTsLc1rjcmaJknlIMuUw0T1I30"), "consumerSecret");
+    
+    profileParams->setObject(twitterParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::TWITTER)->getCString());
+    
+    __Dictionary *googleParams = __Dictionary::create();
+    googleParams->setObject(__String::create("833688084302-sg4q1vug2ivehp54lu86rig3p0b0q85v.apps.googleusercontent.com"), "clientId");
+    
+    profileParams->setObject(googleParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::GOOGLE)->getCString());
     
     // initialize director
     auto director = Director::getInstance();

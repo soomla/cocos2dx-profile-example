@@ -42,7 +42,7 @@
 		<string>Icon-144.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>org.cocos2d-x.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>org.cocos2d-x.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -61,6 +61,24 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb409611972431183</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>twT8NMGwKq6USYCjZox86Bxd2RJ</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>org.cocos2d-x.Cocos2dxProfileExample-iOS</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>org.cocos2d-x.Cocos2dxProfileExample-iOS</string>
 			</array>
 		</dict>
 	</array>

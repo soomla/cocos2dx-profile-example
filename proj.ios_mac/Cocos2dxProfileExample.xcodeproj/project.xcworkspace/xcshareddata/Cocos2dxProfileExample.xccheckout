@@ -10,57 +10,57 @@
 	<string>Cocos2dxProfileExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>569DF665-9AB9-4F05-B0E8-2671C72E8B50</key>
-		<string>ssh://github.com/soomla/cocos2dx-profile.git</string>
-		<key>5D4C0198-9512-4907-AF93-BA643411701F</key>
-		<string>ssh://github.com/soomla/cocos2dx-profile-example.git</string>
-		<key>C59E02A5-4DCB-476E-A630-0F0A130FD530</key>
-		<string>https://github.com/soomla/soomla-cocos2dx-core.git</string>
-		<key>CBF6B212-63B2-46E3-9B69-8EC56BCC1736</key>
-		<string>ssh://github.com/vedi/jansson.git</string>
-		<key>CCE83512-FD05-48A3-A11F-33F86F9F7DF8</key>
-		<string>ssh://github.com/soomla/cocos2dx-store.git</string>
-		<key>EC7175CE-4299-43D3-BA3D-5D0FFCEF0E09</key>
+		<key>174E178AE9F0D3709B51E4C339F01CA9ADA0F070</key>
+		<string>github.com:soomla/cocos2dx-profile-example.git</string>
+		<key>7F41E3A86218147E742AB88280559E2C4A837E7E</key>
+		<string>github.com:soomla/cocos2dx-store.git</string>
+		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
 		<string>https://github.com/cocos2d/cocos2d-x.git</string>
+		<key>BAD866C9FDD19D65B7E9CC9A77F606F8843B9079</key>
+		<string>github.com:soomla/soomla-cocos2dx-core.git</string>
+		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
+		<string>github.com:soomla/cocos2dx-profile.git</string>
+		<key>E1C6A175F69FE775E12FC4745DF7A1DEA941144C</key>
+		<string>github.com:vedi/jansson.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>projects/cocos2dx-profile-example/proj.ios_mac/Cocos2dxProfileExample.xcodeproj/project.xcworkspace</string>
+	<string>proj.ios_mac/Cocos2dxProfileExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>569DF665-9AB9-4F05-B0E8-2671C72E8B50</key>
-		<string>../../../../../extensions/cocos2dx-profile</string>
-		<key>5D4C0198-9512-4907-AF93-BA643411701F</key>
+		<key>174E178AE9F0D3709B51E4C339F01CA9ADA0F070</key>
 		<string>../../..</string>
-		<key>C59E02A5-4DCB-476E-A630-0F0A130FD530</key>
-		<string>../../../../../extensions/soomla-cocos2dx-core</string>
-		<key>CBF6B212-63B2-46E3-9B69-8EC56BCC1736</key>
-		<string>../../../../../external/jansson</string>
-		<key>CCE83512-FD05-48A3-A11F-33F86F9F7DF8</key>
-		<string>../../../../../extensions/cocos2dx-store</string>
-		<key>EC7175CE-4299-43D3-BA3D-5D0FFCEF0E09</key>
-		<string>../../../../..</string>
+		<key>7F41E3A86218147E742AB88280559E2C4A837E7E</key>
+		<string>../../../../extensions/cocos2dx-store</string>
+		<key>852ED3691A47A99B0D19C820A500AE9772B2A44E</key>
+		<string>../../../..</string>
+		<key>BAD866C9FDD19D65B7E9CC9A77F606F8843B9079</key>
+		<string>../../../../extensions/soomla-cocos2dx-core</string>
+		<key>DC12E607C51B19A2F89A4800A29AF2E834D48132</key>
+		<string>../../../../extensions/cocos2dx-profile</string>
+		<key>E1C6A175F69FE775E12FC4745DF7A1DEA941144C</key>
+		<string>../../../../external/jansson</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/soomla/cocos2dx-profile-example.git</string>
+	<string>github.com:soomla/cocos2dx-profile-example.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>EC7175CE-4299-43D3-BA3D-5D0FFCEF0E09</string>
+	<string>174E178AE9F0D3709B51E4C339F01CA9ADA0F070</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EC7175CE-4299-43D3-BA3D-5D0FFCEF0E09</string>
+			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>cocos2d-x</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>569DF665-9AB9-4F05-B0E8-2671C72E8B50</string>
+			<string>DC12E607C51B19A2F89A4800A29AF2E834D48132</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2dx-profile</string>
 		</dict>
@@ -68,7 +68,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5D4C0198-9512-4907-AF93-BA643411701F</string>
+			<string>174E178AE9F0D3709B51E4C339F01CA9ADA0F070</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2dx-profile-example</string>
 		</dict>
@@ -76,7 +76,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CCE83512-FD05-48A3-A11F-33F86F9F7DF8</string>
+			<string>7F41E3A86218147E742AB88280559E2C4A837E7E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2dx-store</string>
 		</dict>
@@ -84,7 +84,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CBF6B212-63B2-46E3-9B69-8EC56BCC1736</string>
+			<string>E1C6A175F69FE775E12FC4745DF7A1DEA941144C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>jansson</string>
 		</dict>
@@ -92,7 +92,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C59E02A5-4DCB-476E-A630-0F0A130FD530</string>
+			<string>BAD866C9FDD19D65B7E9CC9A77F606F8843B9079</string>
 			<key>IDESourceControlWCCName</key>
 			<string>soomla-cocos2dx-core</string>
 		</dict>

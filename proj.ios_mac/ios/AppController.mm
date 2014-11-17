@@ -32,6 +32,7 @@
 #import "ServiceManager.h"
 #import "ProfileService.h"
 #import "StoreService.h"
+#import "SoomlaProfile.h"
 
 @implementation AppController
 
@@ -138,9 +139,7 @@ static AppDelegate s_sharedApplication;
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    
-    
-    BOOL urlWasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    BOOL urlWasHandled = [[SoomlaProfile getInstance] tryHandleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
     
     return urlWasHandled;
 }

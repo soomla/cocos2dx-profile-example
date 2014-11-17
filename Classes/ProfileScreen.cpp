@@ -57,6 +57,9 @@ bool ProfileScreen::init() {
         return false;
     }
     
+    // Change this if you want to test other social networks
+    targetProvider = soomla::TWITTER;
+    
     loginReward = soomla::CCVirtualItemReward::create(__String::create("login_reward"),
                                                       __String::create("Login Reward"),
                                                       __Integer::create(100), __String::create(MUFFIN_CURRENCY_ITEM_ID));
@@ -159,9 +162,9 @@ bool ProfileScreen::init() {
         
         // These are here for testing purposes only, they should not be called
         // one after the other, but one at the time
-        // soomla::CCSoomlaProfile::getInstance()->like(soomla::FACEBOOK, "The.SOOMLA.Project", likePageReward, &profileError);
-        // soomla::CCSoomlaProfile::getInstance()->getFeed(soomla::FACEBOOK, nullptr, &profileError);
-        soomla::CCSoomlaProfile::getInstance()->getContacts(soomla::FACEBOOK, nullptr, &profileError);
+        // soomla::CCSoomlaProfile::getInstance()->like(targetProvider, "The.SOOMLA.Project", likePageReward, &profileError);
+//         soomla::CCSoomlaProfile::getInstance()->getFeed(targetProvider, nullptr, &profileError);
+        soomla::CCSoomlaProfile::getInstance()->getContacts(targetProvider, nullptr, &profileError);
     };
     
     std::function<void(EventCustom *)> handleLogoutFinished = [this](EventCustom *event) {
@@ -196,7 +199,7 @@ bool ProfileScreen::init() {
                                                                  this);
     
     soomla::CCError *profileError = nullptr;
-    bool isLoggedIn =  soomla::CCSoomlaProfile::getInstance()->isLoggedIn(soomla::FACEBOOK, &profileError);
+    bool isLoggedIn =  soomla::CCSoomlaProfile::getInstance()->isLoggedIn(targetProvider, &profileError);
     if (profileError) {
         MessageBox(profileError->getInfo(), "Error");
     }
@@ -223,20 +226,20 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
         auto sender = static_cast<Widget *>(ref);
         soomla::CCError *profileError = nullptr;
         if (sender->getActionTag() == LOGIN_BUTTON_TAG) {
-            soomla::CCSoomlaProfile::getInstance()->login(soomla::FACEBOOK, loginReward, &profileError);
+            soomla::CCSoomlaProfile::getInstance()->login(targetProvider, loginReward, &profileError);
             
             // TEST open rating page
             // soomla::CCSoomlaProfile::getInstance()->openAppRatingPage(&profileError);
         }
         else if (sender->getActionTag() == STATUS_BUTTON_TAG) {
-            soomla::CCSoomlaProfile::getInstance()->updateStatus(soomla::FACEBOOK, "I love SOOMLA! ", shareReward, &profileError);
+            soomla::CCSoomlaProfile::getInstance()->updateStatus(targetProvider, "I love SOOMLA! ", shareReward, &profileError);
             
             // Or with dialog
-            //soomla::CCSoomlaProfile::getInstance()->updateStatusDialog(soomla::FACEBOOK,"http://www.soom.la", shareReward, &profileError);
+            //soomla::CCSoomlaProfile::getInstance()->updateStatusDialog(targetProvider,"http://www.soom.la", shareReward, &profileError);
         }
         else if (sender->getActionTag() == STORY_BUTTON_TAG) {
-            soomla::CCSoomlaProfile::getInstance()->updateStory(soomla::FACEBOOK,
-                                                                    "This is the story of a very strong and brave SOOMBOT on his jurney from SOOMBOTIA to a far away galaxy. That galaxy contains a blue planet where all human game developers love to eat food spiced with marshmallow.",
+            soomla::CCSoomlaProfile::getInstance()->updateStory(targetProvider,
+                                                                    "The story of SOOMBOT (Profile Test App)",
                                                                     "The story of SOOMBOT (Profile Test App)",
                                                                     "SOOMBOT Story",
                                                                     "DESCRIPTION",
@@ -246,7 +249,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
                                                                     &profileError);
             
             // Or with dialog
-            //soomla::CCSoomlaProfile::getInstance()->updateStoryDialog(soomla::FACEBOOK,
+            //soomla::CCSoomlaProfile::getInstance()->updateStoryDialog(targetProvider,
             //                                                    "The story of SOOMBOT (Profile Test App)",
             //                                                    "SOOMBOT Story",
             //                                                    "DESCRIPTION",
@@ -261,7 +264,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
             this->scheduleOnce(schedule_selector(ProfileScreen::screenshotSavedCallback), 1.0f);
         }
         else if (sender->getActionTag() == LOGOUT_BUTTON_TAG) {
-            soomla::CCSoomlaProfile::getInstance()->logout(soomla::FACEBOOK, &profileError);
+            soomla::CCSoomlaProfile::getInstance()->logout(targetProvider, &profileError);
         }
         else {
             return;
@@ -274,7 +277,7 @@ void ProfileScreen::onClicked(cocos2d::Ref *ref, Widget::TouchEventType touchTyp
 
 void ProfileScreen::screenshotSavedCallback(float dt) {
     soomla::CCError *profileError = nullptr;
-    soomla::CCSoomlaProfile::getInstance()->uploadImage(soomla::FACEBOOK,
+    soomla::CCSoomlaProfile::getInstance()->uploadImage(targetProvider,
                                                             "I love SOOMLA! http://www.soom.la",
                                                             screenshotPath.c_str(),
                                                             uploadReward,

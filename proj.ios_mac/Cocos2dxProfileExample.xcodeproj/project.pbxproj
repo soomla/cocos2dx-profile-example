@@ -1983,8 +1983,8 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../extensions/cocos2dx-profile/build/ios/**",
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/simong/source/cocos2d-x-2.2.5/extensions/cocos2dx-profile/build/ios/**",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2048,8 +2048,8 @@
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../extensions/cocos2dx-profile/build/ios/**",
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
-					"/Users/simong/source/cocos2d-x-2.2.5/extensions/cocos2dx-profile/build/ios/**",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

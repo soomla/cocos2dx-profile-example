@@ -54,6 +54,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     CCDictionary *profileParams = CCDictionary::create();
     
+    CCDictionary *twitterParams = CCDictionary::create();
+    twitterParams->setObject(CCString::create("T8NMGwKq6USYCjZox86Bxd2RJ"), "consumerKey");
+    twitterParams->setObject(CCString::create("TO88J9QjIJlSGfuyfza9Ox2OgTsLc1rjcmaJknlIMuUw0T1I30"), "consumerSecret");
+    
+    profileParams->setObject(twitterParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::TWITTER)->getCString());
+    
+    CCDictionary *googleParams = CCDictionary::create();
+    googleParams->setObject(CCString::create("833688084302-8u16egrn1jiobqgoi8s64ul9qaj3tjrn.apps.googleusercontent.com"), "clientId");
+    
+    profileParams->setObject(googleParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::GOOGLE)->getCString());
+    
     // initialize director
     CCDirector *director = CCDirector::sharedDirector();
     

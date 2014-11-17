@@ -1075,12 +1075,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios",
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios/ios-profile-twitter",
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios/ios-profile-facebook",
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios/ios-profile-google",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/**";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lSTTwitter",
@@ -1130,12 +1125,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios",
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios/ios-profile-twitter",
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios/ios-profile-facebook",
-					"/Users/simong/source/cocos2d-x/extensions/cocos2dx-profile/build/ios/ios-profile-google",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/**";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lSTTwitter",

@@ -58,7 +58,7 @@ bool ProfileScreen::init() {
     }
     
     // Change this if you want to test other social networks
-    targetProvider = soomla::TWITTER;
+    targetProvider = soomla::FACEBOOK;
     
     loginReward = soomla::CCVirtualItemReward::create(__String::create("login_reward"),
                                                       __String::create("Login Reward"),

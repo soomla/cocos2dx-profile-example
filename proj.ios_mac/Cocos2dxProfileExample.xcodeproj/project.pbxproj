@@ -288,6 +288,20 @@
 			remoteGlobalIDString = C0B3C5EE168C6D0C00161FAA;
 			remoteInfo = Cocos2dXStore;
 		};
+		F8DDB91A1A2C7D6600C1FF3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9D4101731978D51900907FA8 /* Cocos2dXCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8694AD91A1CF680001738B4;
+			remoteInfo = "Cocos2dXCore Mac";
+		};
+		F8DDB91D1A2C7D6600C1FF3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8A0EC5419AC8D6F006CB3C2 /* Cocos2dXStore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F84483F71A2B8AF0002D9EC0;
+			remoteInfo = "Cocos2dXStore Mac";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -675,6 +689,7 @@
 			isa = PBXGroup;
 			children = (
 				9D41017A1978D51900907FA8 /* libCocos2dXCore.a */,
+				F8DDB91B1A2C7D6600C1FF3B /* libCocos2dXCore Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -691,6 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A0EC5B19AC8D6F006CB3C2 /* libCocos2dXStore.a */,
+				F8DDB91E1A2C7D6600C1FF3B /* libCocos2dXStore Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -888,6 +904,20 @@
 			fileType = archive.ar;
 			path = libCocos2dXStore.a;
 			remoteRef = F8A0EC5A19AC8D6F006CB3C2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F8DDB91B1A2C7D6600C1FF3B /* libCocos2dXCore Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCocos2dXCore Mac.a";
+			remoteRef = F8DDB91A1A2C7D6600C1FF3B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F8DDB91E1A2C7D6600C1FF3B /* libCocos2dXStore Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCocos2dXStore Mac.a";
+			remoteRef = F8DDB91D1A2C7D6600C1FF3B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

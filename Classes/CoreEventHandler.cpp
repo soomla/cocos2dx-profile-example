@@ -27,3 +27,7 @@ void CoreEventHandler::onRewardGivenEvent(soomla::CCReward *reward) {
 void CoreEventHandler::onRewardTakenEvent(soomla::CCReward *reward) {
     log("%s Reward %s was taken", TAG, reward->getName()->getCString());
 }
+
+void CoreEventHandler::onCustomEvent(cocos2d::__String *name, cocos2d::__Dictionary *extra) {
+    log("%s Custom event arrived %s", TAG, name->getCString());
+}

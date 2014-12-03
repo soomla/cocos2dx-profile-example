@@ -23,6 +23,7 @@
 class CoreEventHandler : public soomla::CCCoreEventHandler {
     void onRewardGivenEvent(soomla::CCReward *reward);
     void onRewardTakenEvent(soomla::CCReward *reward);
+    void onCustomEvent(cocos2d::CCString *name, cocos2d::CCDictionary *extra);
 };
 
 #endif

@@ -1095,7 +1095,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../cocos2d",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
-					"$(SRCROOT)/../cocos2d/extensions",
 					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla/**",
 					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers/**",
 					"$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla/**",
@@ -1145,7 +1144,6 @@
 					"$(inherited)",
 					"$(SRCROOT)/../cocos2d",
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios",
-					"$(SRCROOT)/../cocos2d/extensions",
 					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/Soomla/**",
 					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-profile/build/ios/headers/**",
 					"$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla/**",
@@ -1249,6 +1247,8 @@
 					"$(SRCROOT)/../cocos2d/cocos/network",
 					"$(SRCROOT)/../cocos2d/cocos/audio/include",
 					"$(SRCROOT)/../cocos2d/cocos/editor-support",
+					"$(SRCROOT)/../cocos2d/external",
+					"$(SRCROOT)/../cocos2d/extensions",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1274,6 +1274,8 @@
 					"$(SRCROOT)/../cocos2d/cocos/network",
 					"$(SRCROOT)/../cocos2d/cocos/audio/include",
 					"$(SRCROOT)/../cocos2d/cocos/editor-support",
+					"$(SRCROOT)/../cocos2d/external",
+					"$(SRCROOT)/../cocos2d/extensions",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";

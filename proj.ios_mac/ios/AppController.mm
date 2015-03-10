@@ -25,8 +25,15 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 #import "AppController.h"
-#import "CCEAGLView.h"
 #import "cocos2d.h"
+
+// for Cocos2d-x v3.3+ compatibility only
+#if COCOS2D_VERSION > 0x00030200
+#import "platform/ios/CCEAGLView-ios.h"
+#else
+#import "CCEAGLView.h"
+#endif
+
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "ServiceManager.h"
@@ -83,7 +90,14 @@ static AppDelegate s_sharedApplication;
     [[UIApplication sharedApplication] setStatusBarHidden:true];
 
     // IMPORTANT: Setting the GLView should be done after creating the RootViewController
-    cocos2d::GLView *glview = cocos2d::GLView::createWithEAGLView(eaglView);
+    cocos2d::GLView *glview = nil;
+    
+#if COCOS2D_VERSION > 0x00030200
+    glview = cocos2d::GLViewImpl::createWithEAGLView(eaglView);
+#else
+    glview = cocos2d::GLView::createWithEAGLView(eaglView);
+#endif
+    
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     cocos2d::Application::getInstance()->run();

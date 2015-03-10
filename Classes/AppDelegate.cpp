@@ -73,7 +73,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     auto glview = director->getOpenGLView();
     if(!glview) {
+#if COCOS2D_VERSION > 0x00030200
+        glview = GLViewImpl::create("My Game");
+#else
         glview = GLView::create("My Game");
+#endif
         director->setOpenGLView(glview);
     }
 

@@ -16,15 +16,11 @@
 
 #include "AppDelegate.h"
 #include "ProfileScreen.h"
-#include "CoreEventHandler.h"
-#include "ProfileEventHandler.h"
-#include "CCServiceManager.h"
-#include "CCProfileService.h"
 #include "MuffinRushAssets.h"
-#include "CCServiceManager.h"
-#include "CCStoreService.h"
-#include "CCCoreEventDispatcher.h"
-#include "CCUserProfileUtils.h"
+#include "ProfileEventHandler.h"
+#include "CoreEventHandler.h"
+#include "Cocos2dxProfile.h"
+#include "Cocos2dxStore.h"
 
 USING_NS_CC;
 
@@ -41,9 +37,7 @@ AppDelegate::~AppDelegate()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     
-    __Dictionary *commonParams = __Dictionary::create();
-    commonParams->setObject(__String::create("ExampleCustomSecret"), "customSecret");
-    soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);
+    soomla::CCSoomla::initialize("customSecret");
     
     MuffinRushAssets *assets = MuffinRushAssets::create();
     
@@ -51,7 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     storeParams->setObject(__String::create("ExamplePublicKey"), "androidPublicKey");
     
     soomla::CCCoreEventDispatcher::getInstance()->addEventHandler(coreHandler);
-    soomla::CCStoreService::initShared(assets, storeParams);
+    soomla::CCSoomlaStore::initialize(assets, storeParams);
     
     __Dictionary *profileParams = __Dictionary::create();
     __Dictionary *twitterParams = __Dictionary::create();
@@ -65,11 +59,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     profileParams->setObject(googleParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::GOOGLE)->getCString());
     
+    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
+    soomla::CCSoomlaProfile::initialize(profileParams);
+    
     // initialize director
     auto director = Director::getInstance();
-    
-    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
-    soomla::CCProfileService::initShared(profileParams);
     
     auto glview = director->getOpenGLView();
     if(!glview) {

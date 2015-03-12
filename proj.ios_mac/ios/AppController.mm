@@ -36,9 +36,6 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
-#import "ServiceManager.h"
-#import "ProfileService.h"
-#import "StoreService.h"
 #import "SoomlaProfile.h"
 
 @implementation AppController
@@ -50,10 +47,7 @@
 static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
-    [[ServiceManager sharedServiceManager] registerService:[ProfileService sharedProfileService]];
-    [[ServiceManager sharedServiceManager] registerService:[StoreService sharedStoreService]];
-
+    
     // Override point for customization after application launch.
 
     // Add the view controller's view to the window and display.

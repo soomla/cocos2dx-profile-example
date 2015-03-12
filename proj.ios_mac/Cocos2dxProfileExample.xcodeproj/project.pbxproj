@@ -1100,7 +1100,6 @@
 					"$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla/**",
 					"$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/build/ios/headers/**",
 					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-store/Soomla/**",
-					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-store/build/ios/headers/**",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -1149,7 +1148,6 @@
 					"$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/Soomla/**",
 					"$(SRCROOT)/../cocos2d/extensions/soomla-cocos2dx-core/build/ios/headers/**",
 					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-store/Soomla/**",
-					"$(SRCROOT)/../cocos2d/extensions/cocos2dx-store/build/ios/headers/**",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;

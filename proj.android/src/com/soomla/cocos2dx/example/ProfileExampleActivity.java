@@ -44,7 +44,7 @@ public class ProfileExampleActivity extends Cocos2dxActivity{
     	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
 
         // Uncomment this if you need native debug logs
-        SoomlaConfig.logDebug = true;
+        //SoomlaConfig.logDebug = true;
 
     	return glSurfaceView;
     }

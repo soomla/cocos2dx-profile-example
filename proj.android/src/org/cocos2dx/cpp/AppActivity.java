@@ -22,6 +22,7 @@ public class AppActivity extends Cocos2dxActivity {
     public void init() {
         super.init();
 
-        SoomlaConfig.logDebug = true;
+        // Uncomment this if you need native debug logs
+        //SoomlaConfig.logDebug = true;
     }
 }

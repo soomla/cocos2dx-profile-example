@@ -18,12 +18,9 @@
 #include "ProfileScreen.h"
 #include "CoreEventHandler.h"
 #include "ProfileEventHandler.h"
-#include "CCServiceManager.h"
-#include "CCProfileService.h"
 #include "MuffinRushAssets.h"
-#include "CCServiceManager.h"
-#include "CCStoreService.h"
-#include "CCCoreEventDispatcher.h"
+#include "Cocos2dxStore.h"
+#include "Cocos2dxProfile.h"
 
 USING_NS_CC;
 
@@ -40,17 +37,16 @@ AppDelegate::~AppDelegate()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     
-    CCDictionary *commonParams = CCDictionary::create();
-    commonParams->setObject(CCString::create("ExampleCustomSecret"), "customSecret");
-    soomla::CCServiceManager::getInstance()->setCommonParams(commonParams);
+    soomla::CCSoomla::initialize("customSecret");
     
     MuffinRushAssets *assets = MuffinRushAssets::create();
     
     CCDictionary *storeParams = CCDictionary::create();
     storeParams->setObject(CCString::create("ExamplePublicKey"), "androidPublicKey");
+    storeParams->setObject(CCBool::create(true), "testPurchases");
     
     soomla::CCCoreEventDispatcher::getInstance()->addEventHandler(coreHandler);
-    soomla::CCStoreService::initShared(assets, storeParams);
+    soomla::CCSoomlaStore::initialize(assets, storeParams);
     
     CCDictionary *profileParams = CCDictionary::create();
     
@@ -65,11 +61,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     profileParams->setObject(googleParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::GOOGLE)->getCString());
     
+    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
+    soomla::CCSoomlaProfile::initialize(profileParams);
+    
     // initialize director
     CCDirector *director = CCDirector::sharedDirector();
-    
-    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
-    soomla::CCProfileService::initShared(profileParams);
     
     CCDirector::sharedDirector()->setOpenGLView(CCEGLView::sharedOpenGLView());
 

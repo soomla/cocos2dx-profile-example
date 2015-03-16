@@ -24,9 +24,9 @@ THE SOFTWARE.
 package com.soomla.cocos2dx.example;
 
 import android.os.Bundle;
-import com.soomla.cocos2dx.common.ServiceManager;
-import com.soomla.cocos2dx.profile.ProfileService;
-import com.soomla.cocos2dx.store.StoreService;
+
+import com.soomla.SoomlaConfig;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
@@ -43,12 +43,8 @@ public class ProfileExampleActivity extends Cocos2dxActivity{
 
     	glSurfaceView.setEGLConfigChooser(5, 6, 5, 0, 16, 8);
 
-        // initialize services
-        final ServiceManager serviceManager = ServiceManager.getInstance();
-        serviceManager.setActivity(this);
-        serviceManager.setGlSurfaceView(glSurfaceView);
-        serviceManager.registerService(StoreService.getInstance());
-        serviceManager.registerService(ProfileService.getInstance());
+        // Uncomment this if you need native debug logs
+        SoomlaConfig.logDebug = true;
 
     	return glSurfaceView;
     }

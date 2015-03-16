@@ -28,9 +28,9 @@ This example integrates to **Facebook** out-of-the-box, and provides a good exam
     $ git clone git@github.com:soomla/cocos2dx-profile.git extensions/cocos2dx-profile
     ```
 
-3. Clone our [fork](https://github.com/vedi/jansson) of the janssen library into the `external` directory in the root of your Cocos2d-x framework.
+3. Clone our [fork](https://github.com/soomla/jansson) of the janssen library into the `external` directory in the root of your Cocos2d-x framework.
     ```
-    $ git clone git@github.com:vedi/jansson.git external/jansson
+    $ git clone git@github.com:soomla/jansson.git external/jansson
     ```
 
 4. Clone cocos2dx-profile-example into the `projects` directory at the root of the Cocos2d-x framework.

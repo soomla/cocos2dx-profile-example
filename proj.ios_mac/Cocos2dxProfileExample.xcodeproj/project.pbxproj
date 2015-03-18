@@ -230,6 +230,20 @@
 			remoteGlobalIDString = 1551A33E158F2AB200E66CFE;
 			remoteInfo = cocos2dx;
 		};
+		F8288B9C1AB9873A008DCE38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8A08DBE19BBA08D0016EA7F /* Cocos2dXCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8694AD91A1CF680001738B4;
+			remoteInfo = "Cocos2dXCore Mac";
+		};
+		F8288BA01AB9873A008DCE38 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8A08DC419BBA0970016EA7F /* Cocos2dXStore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F84483F71A2B8AF0002D9EC0;
+			remoteInfo = "Cocos2dXStore Mac";
+		};
 		F85EFA6A1A0004F2006092AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F8A08DBE19BBA08D0016EA7F /* Cocos2dXCore.xcodeproj */;
@@ -1577,6 +1591,7 @@
 			children = (
 				F8A08DC319BBA08D0016EA7F /* libCocos2dXCore.a */,
 				F85EFA6B1A0004F2006092AB /* libCocos2dXCoreWithJsb.a */,
+				F8288B9D1AB9873A008DCE38 /* libCocos2dXCore Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1586,6 +1601,7 @@
 			children = (
 				F8A08DC919BBA0970016EA7F /* libCocos2dXStore.a */,
 				F85EFA6E1A0004F2006092AB /* libCocos2dXStoreWithJsb.a */,
+				F8288BA11AB9873A008DCE38 /* libCocos2dXStore Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1679,6 +1695,20 @@
 			fileType = archive.ar;
 			path = libcocos2dx.a;
 			remoteRef = 15A3D8851682F7B3002FB0C5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F8288B9D1AB9873A008DCE38 /* libCocos2dXCore Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCocos2dXCore Mac.a";
+			remoteRef = F8288B9C1AB9873A008DCE38 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F8288BA11AB9873A008DCE38 /* libCocos2dXStore Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCocos2dXStore Mac.a";
+			remoteRef = F8288BA01AB9873A008DCE38 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		F85EFA6B1A0004F2006092AB /* libCocos2dXCoreWithJsb.a */ = {
@@ -1999,7 +2029,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv6 armv7 armv7s i386";
+				VALID_ARCHS = "armv6 armv7 armv7s i386 arm64";
 			};
 			name = Debug;
 		};
@@ -2065,7 +2095,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv6 armv7 armv7s i386";
+				VALID_ARCHS = "armv6 armv7 armv7s i386 arm64";
 			};
 			name = Release;
 		};

@@ -15,19 +15,31 @@
  */
 
 #include "CoreEventHandler.h"
+#include "Cocos2dxCore.h"
 
 #define TAG "CoreEventHandler >>>"
 
 USING_NS_CC;
+using namespace soomla;
 
-void CoreEventHandler::onRewardGivenEvent(soomla::CCReward *reward) {
-    CCLOG("%s Reward %s was given", TAG, reward->getName()->getCString());
+CoreEventHandler::CoreEventHandler() {
+    CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(CoreEventHandler::onRewardGivenEvent), CCCoreConsts::EVENT_REWARD_GIVEN, NULL);
+    CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(CoreEventHandler::onRewardTakenEvent), CCCoreConsts::EVENT_REWARD_TAKEN, NULL);
+    CCNotificationCenter::sharedNotificationCenter()->addObserver(this, callfuncO_selector(CoreEventHandler::onCustomEvent), CCCoreConsts::EVENT_CUSTOM, NULL);
 }
 
-void CoreEventHandler::onRewardTakenEvent(soomla::CCReward *reward) {
-    CCLOG("%s Reward %s was taken", TAG, reward->getName()->getCString());
+void CoreEventHandler::onRewardGivenEvent(cocos2d::CCDictionary *eventData) {
+    CCReward *reward = dynamic_cast<CCReward *>(eventData->objectForKey(CCCoreConsts::DICT_ELEMENT_REWARD));
+    CCSoomlaUtils::logDebug(TAG, CCString::createWithFormat("Reward %s was given", reward->getName()->getCString())->getCString());
 }
 
-void CoreEventHandler::onCustomEvent(cocos2d::CCString *name, cocos2d::CCDictionary *extra) {
-    CCLOG("%s Custom event received %s", TAG, name->getCString());
+void CoreEventHandler::onRewardTakenEvent(cocos2d::CCDictionary *eventData) {
+    CCReward *reward = dynamic_cast<CCReward *>(eventData->objectForKey(CCCoreConsts::DICT_ELEMENT_REWARD));
+    CCSoomlaUtils::logDebug(TAG, CCString::createWithFormat("Reward %s was taken", reward->getName()->getCString())->getCString());
+}
+
+void CoreEventHandler::onCustomEvent(cocos2d::CCDictionary *eventData) {
+    CCString *name = dynamic_cast<CCString *>(eventData->objectForKey(CCCoreConsts::DICT_ELEMENT_NAME));
+//    CCDictionary *extra = dynamic_cast<CCDictionary *>(eventData->objectForKey(CCCoreConsts::DICT_ELEMENT_EXTRA));
+    CCSoomlaUtils::logDebug(TAG, CCString::createWithFormat("Custom event arrived %s", name->getCString())->getCString());
 }

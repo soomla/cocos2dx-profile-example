@@ -14,44 +14,39 @@
  limitations under the License.
  */
 
-//
-// Created by Fedor Shubin on 6/14/14.
-//
-
-
-#include "CCProfileEventHandler.h"
-
 #ifndef __ProfileEventHandler_H_
 #define __ProfileEventHandler_H_
 
+#include "cocos2d.h"
 
-class ProfileEventHandler: public soomla::CCProfileEventHandler {
+class ProfileEventHandler : public cocos2d::CCObject {
 
 public:
-    virtual void onProfileInitialized();
-    virtual void onUserRatingEvent();
-    virtual void onLoginFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
-    virtual void onLoginFinished(soomla::CCUserProfile *userProfile, cocos2d::CCString *payload);
-    virtual void onLoginStarted(soomla::CCProvider provider, cocos2d::CCString *payload);
-    virtual void onLoginCancelledEvent(soomla::CCProvider provider, cocos2d::CCString *payload);
+    ProfileEventHandler();
+    virtual void onProfileInitialized(cocos2d::CCDictionary *eventData);
+    virtual void onUserRatingEvent(cocos2d::CCDictionary *eventData);
+    virtual void onLoginFinished(cocos2d::CCDictionary *eventData);
+    virtual void onLoginStarted(cocos2d::CCDictionary *eventData);
+    virtual void onLoginCancelledEvent(cocos2d::CCDictionary *eventData);
+    virtual void onLoginFailed(cocos2d::CCDictionary *eventData);
     
-    virtual void onLogoutFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription);
-    virtual void onLogoutFinished(soomla::CCProvider provider);
-    virtual void onLogoutStarted(soomla::CCProvider provider);
+    virtual void onLogoutFailed(cocos2d::CCDictionary *eventData);
+    virtual void onLogoutFinished(cocos2d::CCDictionary *eventData);
+    virtual void onLogoutStarted(cocos2d::CCDictionary *eventData);
     
-    virtual void onGetContactsFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
-    virtual void onGetContactsFinished(soomla::CCProvider provider, cocos2d::CCArray *contactsDict, cocos2d::CCString *payload);
-    virtual void onGetContactsStarted(soomla::CCProvider provider, cocos2d::CCString *payload);
+    virtual void onGetContactsFailed(cocos2d::CCDictionary *eventData);
+    virtual void onGetContactsFinished(cocos2d::CCDictionary *eventData);
+    virtual void onGetContactsStarted(cocos2d::CCDictionary *eventData);
     
-    virtual void onGetFeedFailed(soomla::CCProvider provider, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
-    virtual void onGetFeedFinished(soomla::CCProvider provider, cocos2d::CCArray *feedList, cocos2d::CCString *payload);
-    virtual void onGetFeedStarted(soomla::CCProvider provider, cocos2d::CCString *payload);
+    virtual void onGetFeedFailed(cocos2d::CCDictionary *eventData);
+    virtual void onGetFeedFinished(cocos2d::CCDictionary *eventData);
+    virtual void onGetFeedStarted(cocos2d::CCDictionary *eventData);
     
-    virtual void onSocialActionFailedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *errorDescription, cocos2d::CCString *payload);
-    virtual void onSocialActionFinishedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *payload);
-    virtual void onSocialActionStartedEvent(soomla::CCProvider provider, soomla::CCSocialActionType socialActionType, cocos2d::CCString *payload);
+    virtual void onSocialActionFailedEvent(cocos2d::CCDictionary *eventData);
+    virtual void onSocialActionFinishedEvent(cocos2d::CCDictionary *eventData);
+    virtual void onSocialActionStartedEvent(cocos2d::CCDictionary *eventData);
     
-    virtual void onUserProfileUpdatedEvent(soomla::CCUserProfile *userProfile);
+    virtual void onUserProfileUpdatedEvent(cocos2d::CCDictionary *eventData);
 };
 
 

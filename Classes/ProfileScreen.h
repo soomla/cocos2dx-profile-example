@@ -51,9 +51,9 @@ public:
 
     void onClicked(cocos2d::CCObject *ref, cocos2d::ui::TouchEventType touchType);
     
-    void onLoginFinished(CCObject* obj);
-    void onLogoutFinished(CCObject* obj);
-    void onProfileUpdated(CCObject* obj);
+    void onLoginFinished(cocos2d::CCDictionary* obj);
+    void onLogoutFinished(cocos2d::CCDictionary* obj);
+    void onProfileUpdated(cocos2d::CCDictionary* obj);
     
 private:
     

@@ -31,8 +31,6 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
-    soomla::CCProfileEventDispatcher::getInstance()->removeEventHandler(handler);
-    soomla::CCCoreEventDispatcher::getInstance()->removeEventHandler(coreHandler);
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
@@ -45,7 +43,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     storeParams->setObject(CCString::create("ExamplePublicKey"), "androidPublicKey");
     storeParams->setObject(CCBool::create(true), "testPurchases");
     
-    soomla::CCCoreEventDispatcher::getInstance()->addEventHandler(coreHandler);
     soomla::CCSoomlaStore::initialize(assets, storeParams);
     
     CCDictionary *profileParams = CCDictionary::create();
@@ -61,7 +58,6 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     profileParams->setObject(googleParams, soomla::CCUserProfileUtils::providerEnumToString(soomla::GOOGLE)->getCString());
     
-    soomla::CCProfileEventDispatcher::getInstance()->addEventHandler(handler);
     soomla::CCSoomlaProfile::initialize(profileParams);
     
     // initialize director

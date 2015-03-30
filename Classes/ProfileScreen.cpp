@@ -184,7 +184,8 @@ bool ProfileScreen::init() {
     };
     
     std::function<void(EventCustom *)> handleProfileUpdatedFinished = [this](EventCustom *event) {
-        soomla::CCUserProfile *userProfile = (soomla::CCUserProfile *)(event->getUserData());
+        __Dictionary *eventData = (__Dictionary *)event->getUserData();
+        soomla::CCUserProfile *userProfile = (soomla::CCUserProfile *)(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_USER_PROFILE));
         
         log("%s %s has logged in", userProfile->getFirstName()->getCString(), userProfile->getLastName()->getCString());
     };

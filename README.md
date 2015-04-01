@@ -15,7 +15,7 @@ This example integrates to **Facebook** out-of-the-box, and provides a good exam
 
 ## Getting started
 
-1. Obtain the Cocos2d-x framework either from [Github](https://github.com/cocos2d/cocos2d-x) or from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure to use the latest stable 3rd version of cocos2d-x (we tested with v3.2).
+1. Obtain the Cocos2d-x framework either from [Github](https://github.com/cocos2d/cocos2d-x) or from the [Cocos2d-x website](http://www.cocos2d-x.org/download). Make sure to use the latest stable 3rd version of cocos2d-x (we tested with v3.3/v3.4).
     ```
     $ git clone git@github.com:cocos2d/cocos2d-x.git
     ```

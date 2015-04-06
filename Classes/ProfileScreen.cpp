@@ -192,7 +192,7 @@ ProfileScreen::~ProfileScreen() {
     CC_SAFE_DELETE(logoutButton);
 }
 
-void ProfileScreen::onLoginFinished(CCObject* obj) {
+void ProfileScreen::onLoginFinished(CCDictionary* eventData) {
     this->setLoggedInState();
     
     soomla::CCError *profileError = NULL;
@@ -203,7 +203,7 @@ void ProfileScreen::onLoginFinished(CCObject* obj) {
     soomla::CCSoomlaProfile::getInstance()->getContacts(targetProvider, NULL, &profileError);
 }
 
-void ProfileScreen::onLogoutFinished(CCObject* obj) {
+void ProfileScreen::onLogoutFinished(CCDictionary* eventData) {
     logoutButton->setVisible(false);
     logoutButton->setEnabled(false);
     loginButton->setVisible(true);
@@ -219,8 +219,8 @@ void ProfileScreen::onLogoutFinished(CCObject* obj) {
     uploadButton->setBright(false);
 }
 
-void ProfileScreen::onProfileUpdated(CCObject* obj) {
-    soomla::CCUserProfile *userProfile = (soomla::CCUserProfile *)(obj);
+void ProfileScreen::onProfileUpdated(CCDictionary* eventData) {
+    soomla::CCUserProfile *userProfile = dynamic_cast<soomla::CCUserProfile *>(eventData->objectForKey(soomla::CCProfileConsts::DICT_ELEMENT_USER_PROFILE));
     
     CCLOG("%s %s has logged in", userProfile->getFirstName()->getCString(), userProfile->getLastName()->getCString());
 }

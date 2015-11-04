@@ -278,17 +278,6 @@ bool MuffinRushAssets::init() {
             __String::create("Characters"),
             __Array::create(__String::create("fat_cat"), __String::create("happi_hippo"), __String::create("funkey_monkey"), NULL));
 
-
-    /** Google MANAGED Items **/
-    CCVirtualGood *noAdsLTVG = CCLifetimeVG::create(
-              __String::create("No Ads"),
-              __String::create("No More Ads!"),
-              __String::create("no_ads"),
-              CCPurchaseWithMarket::createWithMarketItem(CCMarketItem::create(
-                            __String::create(NO_ADDS_LTVG_PRODUCT_ID),
-                            __Integer::create(CCMarketItem::NONCONSUMABLE), __Double::create(1.99))
-              )
-    );
     mCurrencies = __Array::create(muffinCurrency, NULL);
     mCurrencies->retain();
 
@@ -296,7 +285,7 @@ bool MuffinRushAssets::init() {
 							 showRoomGood, showRoomGood0, showRoomGood1, showRoomGood2, showRoomGood3, showRoomGood4,
 							 deliveryVehicleGood, deliveryVehicleGood0, deliveryVehicleGood1, deliveryVehicleGood2,
 							 deliveryVehicleGood3, deliveryVehicleGood4, fatCatGood, happiHippoGood, funkeyMonkeyGood,
-                             noAdsLTVG, NULL);
+                             NULL);
     mGoods->retain();
 
     mCurrencyPacks = __Array::create(tenmuffPack, fiftymuffPack, fourhundmuffPack, thousandmuffPack, NULL);

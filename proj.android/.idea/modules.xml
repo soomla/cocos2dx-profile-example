@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cocos2dx-profile-example.iml" filepath="$PROJECT_DIR$/cocos2dx-profile-example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../extensions/cocos2dx-profile/development/submodules/android-profile/social-providers/android-profile-facebook/libs/facebook/facebook.iml" filepath="$PROJECT_DIR$/../../../extensions/cocos2dx-profile/development/submodules/android-profile/social-providers/android-profile-facebook/libs/facebook/facebook.iml" />
       <module fileurl="file://$PROJECT_DIR$/google-play-services_lib/google-play-services_lib.iml" filepath="$PROJECT_DIR$/google-play-services_lib/google-play-services_lib.iml" />
     </modules>
   </component>
 </project>
-
